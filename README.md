@@ -44,6 +44,12 @@ All numeric values managed by the logic are limited to a range between `0` (zero
 - Lowest possible numeric version: `0.0.0`
 - Highest possible numeric version `100000.100000.100000`
 
+## Branching
+
+- branch `master`: latest stable (possibly unreleased) version
+- branch `releases`: final release versions
+- tags: will be created on branch `releases` and formatted as `MAJOR.MINOR.PATCH`
+
 ## Credits
 
 The project logo at the top of this page uses the following assets:
