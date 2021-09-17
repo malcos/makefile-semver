@@ -7,7 +7,9 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 
 ## [Unreleased]
 
-(empty)
+- Support configurable release cycles suffixes (issue #1)
+- Fix output variables to show proper zero values even if the data file is empty or non existent
+- Reduce the depth of target names
 
 ## [0.0.1] - 2021-09-05
 
@@ -16,7 +18,6 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 - First version of documentation and experimental change log
 - Example `Makefile` including the semantic versioning file
 - First SemVer implementation supporting the simple format `MAJOR.MINOR.PATCH`
-
 
 [Unreleased]: https://github.com/malcos/makefile-semver/tree/develop
 [0.0.1]: https://github.com/malcos/makefile-semver/tree/0.0.1

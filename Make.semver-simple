@@ -3,6 +3,7 @@ SEMVER_FILE ?= SEMVER.data
 
 # output variables
 VERSION = $(file < $(SEMVER_FILE))
+VERSION_DATA = $(VERSION)
 VERSION_NUMBER = $(VERSION)
 _major_minor_patch_list := $(subst ., ,$(VERSION))
 VERSION_MAJOR := $(or $(word 1, $(_major_minor_patch_list)), 0)
@@ -12,40 +13,28 @@ VERSION_PATCH := $(or $(word 3, $(_major_minor_patch_list)), 0)
 version.print:
 	@echo $(VERSION)
 
-version.setup:
+version.init:
 	$(file > $(SEMVER_FILE),$(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH))
 	@echo $(VERSION)
 
-version.increment.major:
+version.nextmajor:
 	$(eval VERSION_MAJOR = $(call .increment, $(VERSION_MAJOR)))
 	$(file > $(SEMVER_FILE),$(VERSION_MAJOR).0.0)
 	@echo $(VERSION)
 
-version.increment.minor:
+version.nextminor:
 	$(eval VERSION_MINOR = $(call .increment, $(VERSION_MINOR)))
 	$(file > $(SEMVER_FILE),$(VERSION_MAJOR).$(VERSION_MINOR).0)
 	@echo $(VERSION)
 
-version.increment.patch:
+version.nextpatch:
 	$(eval VERSION_PATCH = $(call .increment, $(VERSION_PATCH)))
 	$(file > $(SEMVER_FILE),$(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH))
 	@echo $(VERSION)
 
-version.next: version.increment.patch
+version.next: version.nextpatch
 
 # support variables (_) and functions (.)
 _basewords := I I I I I I I I I I
 _maxwords = $(foreach _,$(_basewords),$(foreach _,$(_basewords),$(foreach _,$(_basewords),$(foreach _,$(_basewords),$(_basewords)))))
 .increment = $(words $(wordlist 1,$1,$(_maxwords)) I)
-
-# # uncoment this if you feel curious on the values stored in the vairables, or delete it altogether
-# version.debuginfo:
-# 	@echo len _basewords: $(words $(_basewords))
-# 	@echo len _maxwords: $(words $(_maxwords))
-# 	@echo val _major_minor_patch_list $(_major_minor_patch_list)
-# 	@echo ---
-# 	@echo VERSION: $(VERSION)
-# 	@echo VERSION_NUMBER: $(VERSION_NUMBER)
-# 	@echo VERSION_MAJOR: $(VERSION_MAJOR)
-# 	@echo VERSION_MINOR: $(VERSION_MINOR)
-# 	@echo VERSION_PATCH: $(VERSION_PATCH)
