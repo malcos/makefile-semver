@@ -1,37 +1,69 @@
 # input variables and defaults
 SEMVER_FILE ?= SEMVER.data
-
-# output variables
-VERSION = $(file < $(SEMVER_FILE))
-VERSION_NUMBER = $(VERSION)
-_major_minor_patch_list := $(subst ., ,$(VERSION))
-VERSION_MAJOR := $(or $(word 1, $(_major_minor_patch_list)), 0)
-VERSION_MINOR := $(or $(word 2, $(_major_minor_patch_list)), 0)
-VERSION_PATCH := $(or $(word 3, $(_major_minor_patch_list)), 0)
+SEMVER_CYCLES ?= alpha beta rc
 
 version.print:
 	@echo $(VERSION)
 
-version.setup:
-	$(file > $(SEMVER_FILE),$(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH))
-	@echo $(VERSION)
+version.init:
+	$(file > $(SEMVER_FILE),$(VERSION_DATA))
+	@echo $(VERSION_DATA)
 
-version.increment.major:
+version.nextmajor:
 	$(eval VERSION_MAJOR = $(call .increment, $(VERSION_MAJOR)))
-	$(file > $(SEMVER_FILE),$(VERSION_MAJOR).0.0)
-	@echo $(VERSION)
+	$(eval VERSION_MINOR = 0)
+	$(eval VERSION_PATCH = 0)
+	$(file > $(SEMVER_FILE),$(VERSION_DATA))
+	@echo $(VERSION_DATA)
 
-version.increment.minor:
+version.nextminor:
 	$(eval VERSION_MINOR = $(call .increment, $(VERSION_MINOR)))
-	$(file > $(SEMVER_FILE),$(VERSION_MAJOR).$(VERSION_MINOR).0)
-	@echo $(VERSION)
+	$(eval VERSION_PATCH = 0)
+	$(file > $(SEMVER_FILE),$(VERSION_DATA))
+	@echo $(VERSION_DATA)
 
-version.increment.patch:
+version.nextpatch:
 	$(eval VERSION_PATCH = $(call .increment, $(VERSION_PATCH)))
-	$(file > $(SEMVER_FILE),$(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH))
-	@echo $(VERSION)
+	$(file > $(SEMVER_FILE),$(VERSION_DATA))
+	@echo $(VERSION_DATA)
 
-version.next: version.increment.patch
+version.next: version.nextpatch
+
+version.release:
+	$(eval VERSION_CYCLE_NAME = )
+	$(file > $(SEMVER_FILE),$(VERSION_DATA))
+	@echo $(VERSION_DATA)
+
+$(addprefix version.tocycle.,$(SEMVER_CYCLES)):
+	$(eval _sv_cycle_name = $(lastword $(subst ., ,$@)))
+	$(eval VERSION_CYCLE_STEP=$(if $(filter $(_sv_cycle_name),$(VERSION_CYCLE_NAME)),$(VERSION_CYCLE_STEP),0))
+	$(eval VERSION_CYCLE_NAME = $(_sv_cycle_name))
+	$(file > $(SEMVER_FILE),$(VERSION_DATA))
+	@echo $(VERSION_DATA)
+
+version.nextcycle:
+	$(eval VERSION_CYCLE_STEP = $(call .increment, $(VERSION_CYCLE_STEP)))
+	$(file > $(SEMVER_FILE),$(VERSION_DATA))
+	@echo $(VERSION_DATA)
+
+
+# semver data from file
+_sv_data := $(file < $(SEMVER_FILE))                           # "3.14.15-rc.2"
+_sv_mmp := $(subst ., ,$(word 1, $(subst -, ,$(_sv_data))))    # 3 14 15
+_sv_cycle := $(subst ., ,$(word 2, $(subst -, ,$(_sv_data))))  # rc 2
+
+# output variables: atomic values
+VERSION_MAJOR := $(or $(word 1, $(_sv_mmp)), 0)
+VERSION_MINOR := $(or $(word 2, $(_sv_mmp)), 0)
+VERSION_PATCH := $(or $(word 3, $(_sv_mmp)), 0)
+VERSION_CYCLE_NAME := $(word 1, $(_sv_cycle))
+VERSION_CYCLE_STEP := $(or $(word 2, $(_sv_cycle)), 0)
+
+# output variables: composite values
+VERSION_NUMBER = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
+VERSION_CYCLE = $(and $(VERSION_CYCLE_NAME), $(VERSION_CYCLE_NAME).$(VERSION_CYCLE_STEP))
+VERSION_DATA = $(VERSION_NUMBER)$(addprefix -,$(VERSION_CYCLE))
+VERSION = $(VERSION_DATA)
 
 # support variables (_) and functions (.)
 _basewords := I I I I I I I I I I
