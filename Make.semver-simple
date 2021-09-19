@@ -1,5 +1,6 @@
 # input variables and defaults
 SEMVER_FILE ?= SEMVER.data
+VERSION_METADATA ?=
 
 version.print:
 	@echo $(VERSION)
@@ -32,7 +33,7 @@ VERSION_MINOR := $(or $(word 2, $(subst ., ,$(_sv_data))), 0)
 VERSION_PATCH := $(or $(word 3, $(subst ., ,$(_sv_data))), 0)
 VERSION_NUMBER = $(_sv_data)
 VERSION_DATA = $(VERSION_NUMBER)
-VERSION = $(VERSION_DATA)
+VERSION = $(VERSION_DATA)$(addprefix +,$(VERSION_METADATA))
 
 # support variables (_) and functions (.)
 _basewords := I I I I I I I I I I

@@ -64,7 +64,7 @@ You can choose from two different implementations:
 | :-- | :-- |
 | `version.tocycle.${cycle}` | Set `${VERSION_CYCLE_NAME}` and update `$(SEMVER_FILE)`. The placeholder `${cycle}` is one of the names declared in `$(SEMVER_CYCLES)`. Selecting the same value as currently active will have no effect on  `$(VERSION_CYCLE_STEP)`, otherwise `$(VERSION_CYCLE_STEP)` will be reset to `0` |
 | `version.nextcycle` | Increment `$(VERSION_CYCLE_STEP)` by one and update `$(SEMVER_FILE)` |
-| `version.release` | Clear `$(VERSION_CYCLE_NAME)` by one and update `$(SEMVER_FILE)`, effectively removing the pre release cycle name and stepping from the version data |
+| `version.release` | Clear `$(VERSION_CYCLE_NAME)` and update `$(SEMVER_FILE)`, effectively removing the pre release cycle name and stepping from the version data |
 
 ## Limitations
 

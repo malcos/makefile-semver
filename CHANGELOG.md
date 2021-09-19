@@ -7,7 +7,9 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 
 ## [Unreleased]
 
-(empty)
+### Added
+
+- Support for build metadata added to both implementations (issue #2)
 
 ## [0.0.2] - 2021-09-19
 

@@ -1,6 +1,7 @@
 # input variables and defaults
 SEMVER_FILE ?= SEMVER.data
 SEMVER_CYCLES ?= alpha beta rc
+VERSION_METADATA ?=
 
 version.print:
 	@echo $(VERSION)
@@ -59,7 +60,7 @@ VERSION_CYCLE_STEP := $(or $(word 2, $(_sv_cycle)), 0)
 VERSION_NUMBER = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 VERSION_CYCLE = $(and $(VERSION_CYCLE_NAME), $(VERSION_CYCLE_NAME).$(VERSION_CYCLE_STEP))
 VERSION_DATA = $(VERSION_NUMBER)$(addprefix -,$(VERSION_CYCLE))
-VERSION = $(VERSION_DATA)
+VERSION = $(VERSION_DATA)$(addprefix +,$(VERSION_METADATA))
 
 # support variables (_) and functions (.)
 _basewords := I I I I I I I I I I
