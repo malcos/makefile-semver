@@ -4,30 +4,45 @@
 
 ![makefile-semver](logo.png "makefile-semver logo")
 
-This is a pure GNU make implementation of the SemVer specification. It is intended to work on most operating systems without additional dependencies.
+This is a pure [GNU make](https://www.gnu.org/software/make/manual/) implementation of the [SemVer specification](https://semver.org/). It is intended to work on most operating systems without additional dependencies.
 
-The best command line experience is achieved when auto completion support for `make` is enabled.
+For a better command line experience enable auto completion support for `make` in your favorite terminal shell.
+
+## Implementations
+
+Two different implementation flavors are available
+
+### [Makefile.semver-basic](./Makefile.semver-basic)
+
+Basic implementation for numeric versions formatted as `MAJOR.MINOR.PATCH` (SemVer [#6](https://semver.org/#spec-item-6), [#7](https://semver.org/#spec-item-7) and [#8](https://semver.org/#spec-item-8)) with additional support for arbitrarily user defined build metadata (SemVer [#10](https://semver.org/#spec-item-10)). Examples:
+
+- `3.14.15`
+- `3.14.15+git:cf34d2a`
+
+### [Makefile.semver-complete](Makefile.semver-complete)
+
+Extends the functionality of `Makefile.semver-basic` with additional support for optional user-defined pre-release cycles using numeric steps (SemVer [#9](https://semver.org/#spec-item-9)). Examples:
+
+- `3.14.15-alpha.42`
+- `3.14.15-alpha.42+git:cf34d2a`
 
 ## Integration
 
-Either paste the SemVer logic at the bottom of your own `Makefile`, or download the file from this repository and [include](https://www.gnu.org/software/make/manual/html_node/Include.html) it.
+Options:
 
-After that you can optionally override and customize the values of the configuration variables at the beginning of your Makefile.
+- Paste the desired SemVer logic into your own `Makefile`
+- Download one of the implementation files listed above and [include](https://www.gnu.org/software/make/manual/html_node/Include.html) it.
 
-You can choose from two different implementations:
-
-| Filename | Supported format | Example |
-| :-- | :-- | :-- |
-| `Make.semver-simple` | Basic numeric versions | `3.14.15` |
-| `Make.semver-cycles` | With optional pre release cycle steps | `3.14.15-alpha.42` |
+Optionally you can override and customize the values of the configuration variables at the beginning of your `Makefile`.
 
 ## Configuration Variables
 
 | Name | Default value | Description |
 | :-- | :-- | :-- |
 | `SEMVER_FILE` |  `SEMVER.data` | Filename used to store and retrieve the version data. The contents are in plain semantic versioning format |
+| `VERSION_METADATA` | | A user defined variable providing **volatile** and **non persistent** build metadata for inclusion in the version string. |
 
-### Additional Configuration Variables For "cycles"
+### Additional Configuration Variables For `Makefile.semver-complete`
 
 | Name | Default value | Description |
 | :-- | :-- | :-- |
@@ -35,17 +50,20 @@ You can choose from two different implementations:
 
 ## Output Variables
 
-| Name | e.g.simple | e.g.cycles | Description |
+These variables are intended to be read and utilized by the user creating a `Makefile` (you).
+
+| Name | basic | complete | Description |
 | :-- | :-- | :-- | :-- |
-| `VERSION` | `3.14.15` | `3.14.15-alpha.42` | The full and most complete version string as implementation can provide. It's the same values as `$(VERSION_DATA)` |
+| `VERSION` | `3.14.15+git:cf34d2a` | `3.14.15-alpha.42+git:cf34d2a` | The full and most complete version string as implementation can provide. It is comprised of `$(VERSION_DATA)` and `$(VERSION_METADATA)`|
 | `VERSION_DATA` | `3.14.15` | `3.14.15-alpha.42` | The persistent version data as stored in `$(SEMVER_FILE)`. It's combination of `$(VERSION_NUMBER)` and the optional `$(VERSION_CYCLE)`|
+| `VERSION_METADATA` | `git:cf34d2a` | `git:cf34d2a` | See [Configuration Variables](#Configuration_Variables)|
 | `VERSION_NUMBER` | `3.14.15`  | `3.14.15` | The numeric part of the version formatted as `MAJOR`.`MINOR`.`PATCH` |
 | `VERSION_MAJOR` | `3` | `3` | The major version number from `$(VERSION_NUMBER)` |
 | `VERSION_MINOR` | `14` | `14` | The minor version number from `$(VERSION_NUMBER)`
 | `VERSION_PATCH` | `15` | `15` | The patch version number from `$(VERSION_NUMBER)` |
 | `VERSION_CYCLE` | | `alpha.42` | The version pre release cycle name and the stepping formatted as `CYCLE.STEP` |
 | `VERSION_CYCLE_NAME` | | `alpha` | The version pre release cycle name from `$(VERSION_CYCLE)` |
-| `VERSION_CYCLE_STEP` | | `42` | The numeric step from `$(VERSION_CYCLE)`. Notice that this value will always be set and it will default to 0 even if `$(VERSION_CYCLE_NAME)` is empty |
+| `VERSION_CYCLE_STEP` | | `42` | The numeric step from `$(VERSION_CYCLE)`. Notice that this value will always be set and it will default to 1 even if `$(VERSION_CYCLE_NAME)` is empty |
 
 ## Make Targets
 
@@ -62,7 +80,7 @@ You can choose from two different implementations:
 
 | Name | Description |
 | :-- | :-- |
-| `version.tocycle.${cycle}` | Set `${VERSION_CYCLE_NAME}` and update `$(SEMVER_FILE)`. The placeholder `${cycle}` is one of the names declared in `$(SEMVER_CYCLES)`. Selecting the same value as currently active will have no effect on  `$(VERSION_CYCLE_STEP)`, otherwise `$(VERSION_CYCLE_STEP)` will be reset to `0` |
+| `version.tocycle.*` | Set `${VERSION_CYCLE_NAME}` and update `$(SEMVER_FILE)`. The placeholder `*` is one of the names declared in `$(SEMVER_CYCLES)`. Selecting the same value as currently active will have no effect on  `$(VERSION_CYCLE_STEP)`, otherwise `$(VERSION_CYCLE_STEP)` will be reset to `1` |
 | `version.nextcycle` | Increment `$(VERSION_CYCLE_STEP)` by one and update `$(SEMVER_FILE)` |
 | `version.release` | Clear `$(VERSION_CYCLE_NAME)` and update `$(SEMVER_FILE)`, effectively removing the pre release cycle name and stepping from the version data |
 
@@ -76,8 +94,7 @@ All numeric values managed by the logic are limited to a range between `0` (zero
 ## Branching
 
 - branch `master`: latest stable (possibly unreleased) version
-- branch `releases`: final release versions
-- tags: will be created on branch `releases` and formatted as `MAJOR.MINOR.PATCH`
+- tags: will be created for releases on branch `master` and will be formatted as `MAJOR.MINOR.PATCH`
 
 ## Credits
 

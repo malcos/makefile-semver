@@ -37,7 +37,7 @@ version.release:
 
 $(addprefix version.tocycle.,$(SEMVER_CYCLES)):
 	$(eval _sv_cycle_name = $(lastword $(subst ., ,$@)))
-	$(eval VERSION_CYCLE_STEP=$(if $(filter $(_sv_cycle_name),$(VERSION_CYCLE_NAME)),$(VERSION_CYCLE_STEP),0))
+	$(eval VERSION_CYCLE_STEP=$(if $(filter $(_sv_cycle_name),$(VERSION_CYCLE_NAME)),$(VERSION_CYCLE_STEP),1))
 	$(eval VERSION_CYCLE_NAME = $(_sv_cycle_name))
 	$(file > $(SEMVER_FILE),$(VERSION_DATA))
 	@echo $(VERSION_DATA)
@@ -56,7 +56,7 @@ VERSION_MAJOR := $(or $(word 1, $(_sv_mmp)), 0)
 VERSION_MINOR := $(or $(word 2, $(_sv_mmp)), 0)
 VERSION_PATCH := $(or $(word 3, $(_sv_mmp)), 0)
 VERSION_CYCLE_NAME := $(word 1, $(_sv_cycle))
-VERSION_CYCLE_STEP := $(or $(word 2, $(_sv_cycle)), 0)
+VERSION_CYCLE_STEP := $(or $(word 2, $(_sv_cycle)), 1)
 VERSION_NUMBER = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 VERSION_CYCLE = $(and $(VERSION_CYCLE_NAME), $(VERSION_CYCLE_NAME).$(VERSION_CYCLE_STEP))
 VERSION_DATA = $(VERSION_NUMBER)$(addprefix -,$(VERSION_CYCLE))
