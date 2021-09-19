@@ -47,19 +47,15 @@ version.nextcycle:
 	@echo $(VERSION_DATA)
 
 
-# semver data from file
-_sv_data := $(file < $(SEMVER_FILE))                           # "3.14.15-rc.2"
-_sv_mmp := $(subst ., ,$(word 1, $(subst -, ,$(_sv_data))))    # 3 14 15
-_sv_cycle := $(subst ., ,$(word 2, $(subst -, ,$(_sv_data))))  # rc 2
-
-# output variables: atomic values
+# semver data
+_sv_data := $(file < $(SEMVER_FILE))
+_sv_mmp := $(subst ., ,$(word 1, $(subst -, ,$(_sv_data))))
+_sv_cycle := $(subst ., ,$(word 2, $(subst -, ,$(_sv_data))))
 VERSION_MAJOR := $(or $(word 1, $(_sv_mmp)), 0)
 VERSION_MINOR := $(or $(word 2, $(_sv_mmp)), 0)
 VERSION_PATCH := $(or $(word 3, $(_sv_mmp)), 0)
 VERSION_CYCLE_NAME := $(word 1, $(_sv_cycle))
 VERSION_CYCLE_STEP := $(or $(word 2, $(_sv_cycle)), 0)
-
-# output variables: composite values
 VERSION_NUMBER = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 VERSION_CYCLE = $(and $(VERSION_CYCLE_NAME), $(VERSION_CYCLE_NAME).$(VERSION_CYCLE_STEP))
 VERSION_DATA = $(VERSION_NUMBER)$(addprefix -,$(VERSION_CYCLE))
