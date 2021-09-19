@@ -1,4 +1,4 @@
-# makefile-semver
+# makefile-semver (0.0.3-rc.1)
 
 :: **Semantic Versioning (SemVer) implemented in GNU make** ::
 
@@ -76,7 +76,7 @@ These variables are intended to be read and utilized by the user creating a `Mak
 | `version.nextpatch` | Increment `$(VERSION_PATCH)` by one and update `$(SEMVER_FILE)` |
 | `version.next` | Alias for  `version.nextpatch` |
 
-### Additional Make Targets For "cycles"
+### Additional Make Targets For `Makefile.semver-complete`
 
 | Name | Description |
 | :-- | :-- |
