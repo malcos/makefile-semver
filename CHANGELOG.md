@@ -39,6 +39,6 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 - Example `Makefile` including the semantic versioning file
 - First SemVer implementation supporting the simple format `MAJOR.MINOR.PATCH`
 
-[Unreleased]: https://github.com/malcos/makefile-semver/tree/develop
+[Unreleased]: https://github.com/malcos/makefile-semver/tree/master
 [0.0.2]: https://github.com/malcos/makefile-semver/tree/0.0.2
 [0.0.1]: https://github.com/malcos/makefile-semver/tree/0.0.1

@@ -56,7 +56,7 @@ These variables are intended to be read and utilized by the user creating a `Mak
 | :-- | :-- | :-- | :-- |
 | `VERSION` | `3.14.15+git:cf34d2a` | `3.14.15-alpha.42+git:cf34d2a` | The full and most complete version string as implementation can provide. It is comprised of `$(VERSION_DATA)` and `$(VERSION_METADATA)`|
 | `VERSION_DATA` | `3.14.15` | `3.14.15-alpha.42` | The persistent version data as stored in `$(SEMVER_FILE)`. It's combination of `$(VERSION_NUMBER)` and the optional `$(VERSION_CYCLE)`|
-| `VERSION_METADATA` | `git:cf34d2a` | `git:cf34d2a` | See [Configuration Variables](#Configuration_Variables)|
+| `VERSION_METADATA` | `git:cf34d2a` | `git:cf34d2a` | See [Configuration Variables](#configuration-variables)|
 | `VERSION_NUMBER` | `3.14.15`  | `3.14.15` | The numeric part of the version formatted as `MAJOR`.`MINOR`.`PATCH` |
 | `VERSION_MAJOR` | `3` | `3` | The major version number from `$(VERSION_NUMBER)` |
 | `VERSION_MINOR` | `14` | `14` | The minor version number from `$(VERSION_NUMBER)`
