@@ -1,4 +1,4 @@
-# makefile-semver (0.0.3-rc.1)
+# makefile-semver (0.0.3)
 
 :: **Semantic Versioning (SemVer) implemented in GNU make** ::
 
@@ -90,11 +90,6 @@ All numeric values managed by the logic are limited to a range between `0` (zero
 
 - Lowest possible numeric version: `0.0.0`
 - Highest possible numeric version `100000.100000.100000`
-
-## Branching
-
-- branch `master`: latest stable (possibly unreleased) version
-- tags: will be created for releases on branch `master` and will be formatted as `MAJOR.MINOR.PATCH`
 
 ## Credits
 

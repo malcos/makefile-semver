@@ -7,6 +7,10 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 
 ## [Unreleased]
 
+(empty)
+
+## [0.0.3] - 2021-09-21
+
 ### Added
 
 - Support for build metadata added to both implementations (issue #2)
@@ -40,5 +44,6 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 - First SemVer implementation supporting the simple format `MAJOR.MINOR.PATCH`
 
 [Unreleased]: https://github.com/malcos/makefile-semver/tree/master
+[0.0.3]: https://github.com/malcos/makefile-semver/tree/0.0.3
 [0.0.2]: https://github.com/malcos/makefile-semver/tree/0.0.2
 [0.0.1]: https://github.com/malcos/makefile-semver/tree/0.0.1
