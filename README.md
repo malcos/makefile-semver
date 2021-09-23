@@ -1,4 +1,4 @@
-# makefile-semver (0.0.3)
+# makefile-semver (0.1.0-rc.1)
 
 :: **Semantic Versioning (SemVer) implemented in GNU make** ::
 
@@ -33,13 +33,13 @@ Options:
 - Paste the desired SemVer logic into your own `Makefile`
 - Download one of the implementation files listed above and [include](https://www.gnu.org/software/make/manual/html_node/Include.html) it.
 
-Optionally you can override and customize the values of the configuration variables at the beginning of your `Makefile`.
-
 ## Configuration Variables
+
+You can override the default values of the configuration variables at the beginning of your `Makefile`.
 
 | Name | Default value | Description |
 | :-- | :-- | :-- |
-| `SEMVER_FILE` |  `SEMVER.data` | Filename used to store and retrieve the version data. The contents are in plain semantic versioning format |
+| `SEMVER_FILE` | `SEMVER.data` | Filename used to store and retrieve the version data. The contents are in plain semantic versioning format |
 | `VERSION_METADATA` | | A user defined variable providing **volatile** and **non persistent** build metadata for inclusion in the version string. |
 
 ### Additional Configuration Variables For `Makefile.semver-complete`
@@ -54,16 +54,16 @@ These variables are intended to be read and utilized by the user creating a `Mak
 
 | Name | basic | complete | Description |
 | :-- | :-- | :-- | :-- |
-| `VERSION` | `3.14.15+git:cf34d2a` | `3.14.15-alpha.42+git:cf34d2a` | The full and most complete version string as implementation can provide. It is comprised of `$(VERSION_DATA)` and `$(VERSION_METADATA)`|
+| `VERSION` | `3.14.15+git:cf34d2a` | `3.14.15-alpha.42+git:cf34d2a` | The full and most complete version string as the implementation can provide. It is comprised of `$(VERSION_DATA)` and `$(VERSION_METADATA)`|
 | `VERSION_DATA` | `3.14.15` | `3.14.15-alpha.42` | The persistent version data as stored in `$(SEMVER_FILE)`. It's combination of `$(VERSION_NUMBER)` and the optional `$(VERSION_CYCLE)`|
 | `VERSION_METADATA` | `git:cf34d2a` | `git:cf34d2a` | See [Configuration Variables](#configuration-variables)|
-| `VERSION_NUMBER` | `3.14.15`  | `3.14.15` | The numeric part of the version formatted as `MAJOR`.`MINOR`.`PATCH` |
+| `VERSION_NUMBER` | `3.14.15` | `3.14.15` | The numeric part of the version formatted as `MAJOR`.`MINOR`.`PATCH` |
 | `VERSION_MAJOR` | `3` | `3` | The major version number from `$(VERSION_NUMBER)` |
 | `VERSION_MINOR` | `14` | `14` | The minor version number from `$(VERSION_NUMBER)`
 | `VERSION_PATCH` | `15` | `15` | The patch version number from `$(VERSION_NUMBER)` |
 | `VERSION_CYCLE` | | `alpha.42` | The version pre release cycle name and the stepping formatted as `CYCLE.STEP` |
 | `VERSION_CYCLE_NAME` | | `alpha` | The version pre release cycle name from `$(VERSION_CYCLE)` |
-| `VERSION_CYCLE_STEP` | | `42` | The numeric step from `$(VERSION_CYCLE)`. Notice that this value will always be set and it will default to 1 even if `$(VERSION_CYCLE_NAME)` is empty |
+| `VERSION_CYCLE_STEP` | | `42` | The numeric step from `$(VERSION_CYCLE)`. Notice that this value will always be set and it will default to `1` even if `$(VERSION_CYCLE_NAME)` is empty |
 
 ## Make Targets
 
@@ -74,13 +74,13 @@ These variables are intended to be read and utilized by the user creating a `Mak
 | `version.nextmajor` | Increment `$(VERSION_MAJOR)` by one and update `$(SEMVER_FILE)` |
 | `version.nextminor` | Increment `$(VERSION_MINOR)` by one and update `$(SEMVER_FILE)` |
 | `version.nextpatch` | Increment `$(VERSION_PATCH)` by one and update `$(SEMVER_FILE)` |
-| `version.next` | Alias for  `version.nextpatch` |
+| `version.next` | Alias for `version.nextpatch` |
 
 ### Additional Make Targets For `Makefile.semver-complete`
 
 | Name | Description |
 | :-- | :-- |
-| `version.tocycle.*` | Set `${VERSION_CYCLE_NAME}` and update `$(SEMVER_FILE)`. The placeholder `*` is one of the names declared in `$(SEMVER_CYCLES)`. Selecting the same value as currently active will have no effect on  `$(VERSION_CYCLE_STEP)`, otherwise `$(VERSION_CYCLE_STEP)` will be reset to `1` |
+| `version.tocycle.*` | Set `${VERSION_CYCLE_NAME}` and update `$(SEMVER_FILE)`. The placeholder `*` is one of the names declared in `$(SEMVER_CYCLES)`. Selecting the same value as currently active will have no effect on `$(VERSION_CYCLE_STEP)`, otherwise `$(VERSION_CYCLE_STEP)` will be reset to `1` |
 | `version.nextcycle` | Increment `$(VERSION_CYCLE_STEP)` by one and update `$(SEMVER_FILE)` |
 | `version.release` | Clear `$(VERSION_CYCLE_NAME)` and update `$(SEMVER_FILE)`, effectively removing the pre release cycle name and stepping from the version data |
 

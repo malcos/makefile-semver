@@ -7,7 +7,9 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 
 ## [Unreleased]
 
-(empty)
+### Added
+
+- Unit tests written in native Makefile
 
 ## [0.0.3] - 2021-09-21
 
