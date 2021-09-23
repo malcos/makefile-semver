@@ -10,11 +10,13 @@
 #
 # Considering the possible combinations of using volatile meta data.
 #
-# This module can be used to test the common functionality of Makefile.semver-basic 
+# This module can be used to test the common functionality of Makefile.semver-basic
 # and Makefile.semver-complete
 #
 
 testsuite:
+
+	$(DO) title TEXT="$(firstword $(MAKEFILE_LIST))"
 
 	$(DO) header TEXT="Checking unit tests IO"
 	$(DO) setup VALUE="IO data" verify EXPECTED="IO data"
@@ -172,7 +174,7 @@ testsuite:
 	$(DO) setup VALUE="3.15.42" VERSION_METADATA="git:CAFEBABE" execute ACTION="version.nextmajor" verify EXPECTED="4.0.0"
 	$(DO) capture VERSION_METADATA="git:CAFEBABE" ACTION="version.print" verify EXPECTED="4.0.0+git:CAFEBABE"
 
-	$(DO) header TEXT="testing output variables without with non persistent metadata"
+	$(DO) header TEXT="testing output variables without non persistent metadata"
 	$(DO) setup VALUE="3.14.15" capture ACTION="version.debug.VERSION" verify EXPECTED="3.14.15"
 	$(DO) setup VALUE="3.14.15" capture ACTION="version.debug.VERSION_DATA" verify EXPECTED="3.14.15"
 	$(DO) setup VALUE="3.14.15" capture ACTION="version.debug.VERSION_NUMBER" verify EXPECTED="3.14.15"
@@ -181,7 +183,7 @@ testsuite:
 	$(DO) setup VALUE="3.14.15" capture ACTION="version.debug.VERSION_PATCH" verify EXPECTED="15"
 	$(DO) setup VALUE="3.14.15" capture ACTION="version.debug.VERSION_METADATA" verify EXPECTED=""
 
-	$(DO) header TEXT="testing output variables without with non persistent metadata=git:CAFEBABE"
+	$(DO) header TEXT="testing output variables with non persistent metadata=git:CAFEBABE"
 	$(DO) setup VALUE="3.14.15" VERSION_METADATA="git:CAFEBABE" capture ACTION="version.debug.VERSION" verify EXPECTED="3.14.15+git:CAFEBABE"
 	$(DO) setup VALUE="3.14.15" VERSION_METADATA="git:CAFEBABE" capture ACTION="version.debug.VERSION_DATA" verify EXPECTED="3.14.15"
 	$(DO) setup VALUE="3.14.15" VERSION_METADATA="git:CAFEBABE" capture ACTION="version.debug.VERSION_NUMBER" verify EXPECTED="3.14.15"

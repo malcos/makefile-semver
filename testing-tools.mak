@@ -22,13 +22,26 @@ default:
 	@echo default target in testing-tools.mak. You should never see this.
 
 #
+# print TEXT as title for a test suite
+#
+title:
+	@echo
+	@echo /////////////////////////////////////////////////////////////////////
+	@echo //
+	@echo //
+	@echo // $(TEXT)
+	@echo //
+	@echo //
+	@echo /////////////////////////////////////////////////////////////////////
+
+#
 # print TEXT as header for a set of tests
 #
 header:
 	@echo
-	@echo ::
-	@echo :: $(TEXT)
-	@echo ::
+	@echo //
+	@echo // $(TEXT)
+	@echo //
 
 #
 # setup mock data for a test, write VALUE into the TESTFILE
