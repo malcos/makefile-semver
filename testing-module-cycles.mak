@@ -5,7 +5,7 @@
 # This module can be used to test the common functionality of Makefile.semver-complete
 #
 
-testsuite:
+runtests:
 
 	$(DO) title TEXT="$(firstword $(MAKEFILE_LIST))"
 

@@ -33,6 +33,14 @@ Options:
 - Paste the desired SemVer logic into your own `Makefile`
 - Download one of the implementation files listed above and [include](https://www.gnu.org/software/make/manual/html_node/Include.html) it.
 
+## Testing
+
+Both implementations got unit tests in place, which are in turn also written in pure `Makefile` format. To run the tests execute:
+
+```shell
+make runtests
+```
+
 ## Configuration Variables
 
 You can override the default values of the configuration variables at the beginning of your `Makefile`.

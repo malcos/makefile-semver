@@ -7,7 +7,7 @@
 # and Makefile.semver-complete
 #
 
-testsuite:
+runtests:
 
 	$(DO) title TEXT="$(firstword $(MAKEFILE_LIST))"
 
