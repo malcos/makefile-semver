@@ -8,6 +8,9 @@
 TESTFILE := testing.out
 SEMVER_FILE := $(TESTFILE)
 
+# default overrides
+SEMVER_CYCLES = alphabase betatest
+
 # variable which reads the contents of TESTFILE when referenced
 GOT = $(file < $(TESTFILE))
 

@@ -2,3 +2,4 @@
 runtests:
 	@$(MAKE) --no-print-directory --makefile=testing-basic-numbers.mak testsuite
 	@$(MAKE) --no-print-directory --makefile=testing-complete-numbers.mak testsuite
+	@$(MAKE) --no-print-directory --makefile=testing-complete-cycles.mak testsuite

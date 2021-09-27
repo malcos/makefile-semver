@@ -1,14 +1,7 @@
 #
-# This test suite is intended to verify the correct behaviour of
-#
-# - version.print
-# - version.init
-# - version.nextmajor
-# - version.nextminor
-# - version.nextpatch
-# - version.next
-#
-# Considering the possible combinations of using volatile meta data.
+# This test suite is intended to verify the correct behaviour of actions affecting
+# or being afected by the numberic part of the version (MAJOR.MINOR.PATCH) and/or
+# the volatile build metadata.
 #
 # This module can be used to test the common functionality of Makefile.semver-basic
 # and Makefile.semver-complete
