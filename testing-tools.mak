@@ -67,8 +67,7 @@ capture:
 # compare EXPECTED with the contents of TESTFILE, if the values differ then the test fails
 #
 verify:
-	@echo $(if $(filter-out $(EXPECTED), $(GOT)), $(error !! Test Failed: Expected $(EXPECTED) but got $(GOT)), ___Test Passed: $(EXPECTED))
-
+	@echo $(if $(filter-out X$(EXPECTED), X$(GOT)), $(error !! Test Failed: Expected $(EXPECTED) but got $(GOT)), ___Test Passed: $(EXPECTED))
 
 #
 # peek into version variables
