@@ -31,20 +31,16 @@ This document will use `curl` since it is a common tool found under Linux, Darwi
 
 It is recommended to put these lines at the very end of your `Makefile`
 
-### Latest Version from [master](https://github.com/malcos/makefile-semver/tree/master) branch (may break)
+### Latest Version from [master](https://github.com/malcos/makefile-semver/tree/master) branch (it may break)
 
----
-
-[Makefile.semver-complete](https://github.com/malcos/makefile-semver/blob/master/Makefile.semver-complete)
+[Makefile.semver-complete](https://github.com/malcos/makefile-semver/blob/master/Makefile.semver-complete):
 
 ```Makefile
 _:=$(or $(wildcard Makefile.semver-complete), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/master/Makefile.semver-complete))
 include Makefile.semver-complete
 ```
 
----
-
-[Makefile.semver-basic](https://github.com/malcos/makefile-semver/blob/master/Makefile.semver-basic)
+[Makefile.semver-basic](https://github.com/malcos/makefile-semver/blob/master/Makefile.semver-basic):
 
 ```Makefile
 _:=$(or $(wildcard Makefile.semver-basic), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/master/Makefile.semver-basic))
@@ -53,18 +49,14 @@ include Makefile.semver-basic
 
 ### Release Version [0.0.3](https://github.com/malcos/makefile-semver/tree/0.0.3)
 
----
-
-[Makefile.semver-complete](https://github.com/malcos/makefile-semver/blob/0.0.3/Makefile.semver-complete)
+[Makefile.semver-complete](https://github.com/malcos/makefile-semver/blob/0.0.3/Makefile.semver-complete):
 
 ```Makefile
 _:=$(or $(wildcard Makefile.semver-complete), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/0.0.3/Makefile.semver-complete))
 include Makefile.semver-complete
 ```
 
----
-
-[Makefile.semver-basic](https://github.com/malcos/makefile-semver/blob/0.0.3/Makefile.semver-basic)
+[Makefile.semver-basic](https://github.com/malcos/makefile-semver/blob/0.0.3/Makefile.semver-basic):
 
 ```Makefile
 _:=$(or $(wildcard Makefile.semver-basic), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/0.0.3/Makefile.semver-basic))
@@ -73,18 +65,14 @@ include Makefile.semver-basic
 
 ### Release Version [0.0.2](https://github.com/malcos/makefile-semver/tree/0.0.2)
 
----
-
-[Make.semver-cycles](https://github.com/malcos/makefile-semver/blob/0.0.2/Make.semver-cycles)
+[Make.semver-cycles](https://github.com/malcos/makefile-semver/blob/0.0.2/Make.semver-cycles):
 
 ```Makefile
 _:=$(or $(wildcard Make.semver-cycles), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/0.0.2/Make.semver-cycles))
 include Make.semver-cycles
 ```
 
----
-
-[Make.semver-simple](https://github.com/malcos/makefile-semver/blob/0.0.2/Make.semver-simple)
+[Make.semver-simple](https://github.com/malcos/makefile-semver/blob/0.0.2/Make.semver-simple):
 
 ```Makefile
 _:=$(or $(wildcard Make.semver-simple), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/0.0.2/Make.semver-simple))
@@ -93,9 +81,7 @@ include Make.semver-simple
 
 ### Release Version [0.0.1](https://github.com/malcos/makefile-semver/tree/0.0.1)
 
----
-
-[Make.semver-simple](https://github.com/malcos/makefile-semver/blob/0.0.1/Make.semver-simple)
+[Make.semver-simple](https://github.com/malcos/makefile-semver/blob/0.0.1/Make.semver-simple):
 
 ```Makefile
 _:=$(or $(wildcard Make.semver-simple), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/0.0.1/Make.semver-simple))
