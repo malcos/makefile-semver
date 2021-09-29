@@ -32,6 +32,7 @@ Options:
 
 - Paste the desired SemVer logic into your own `Makefile`
 - Download one of the implementation files listed above and [include](https://www.gnu.org/software/make/manual/html_node/Include.html) it.
+- [Automatically download an include the desired implementation](./support/docs/autoinclude.md).
 
 ## Testing
 
