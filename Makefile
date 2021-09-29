@@ -7,4 +7,4 @@ include Makefile.semver-debug
 
 # unit testing
 runtests:
-	@$(MAKE) --no-print-directory --directory=./testing --makefile=testing-main.mak runtests
+	@$(MAKE) --no-print-directory --directory=./support/testing --makefile=testing-main.mak runtests
