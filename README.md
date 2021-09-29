@@ -2,7 +2,7 @@
 
 :: **Semantic Versioning (SemVer) implemented in GNU make** ::
 
-![makefile-semver](logo.png "makefile-semver logo")
+![makefile-semver](./support/assets/makefile-semver-logo.png "makefile-semver logo")
 
 This is a pure [GNU make](https://www.gnu.org/software/make/manual/) implementation of the [SemVer specification](https://semver.org/). It is intended to work on most operating systems without additional dependencies.
 
