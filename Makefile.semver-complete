@@ -6,10 +6,6 @@ VERSION_METADATA ?=
 version.print:
 	@echo $(VERSION)
 
-version.init:
-	$(file > $(SEMVER_FILE),$(VERSION_DATA))
-	@echo $(VERSION_DATA)
-
 version.nextmajor:
 	$(eval VERSION_MAJOR = $(call .increment, $(VERSION_MAJOR)))
 	$(eval VERSION_MINOR = 0)
@@ -47,9 +43,8 @@ version.nextcycle:
 	$(file > $(SEMVER_FILE),$(VERSION_DATA))
 	@echo $(VERSION_DATA)
 
-
 # semver data
-_sv_data := $(file < $(SEMVER_FILE))
+_sv_data := $(file < $(strip $(SEMVER_FILE)))
 _sv_mmp := $(subst ., ,$(word 1, $(subst -, ,$(_sv_data))))
 _sv_cycle := $(subst ., ,$(word 2, $(subst -, ,$(_sv_data))))
 VERSION_MAJOR := $(or $(word 1, $(_sv_mmp)), 0)
@@ -61,6 +56,7 @@ VERSION_NUMBER = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 VERSION_CYCLE = $(and $(VERSION_CYCLE_NAME), $(VERSION_CYCLE_NAME).$(VERSION_CYCLE_STEP))
 VERSION_DATA = $(VERSION_NUMBER)$(addprefix -,$(VERSION_CYCLE))
 VERSION = $(VERSION_DATA)$(addprefix +,$(VERSION_METADATA))
+_:=$(or $(strip $(file < $(SEMVER_FILE))), $(file > $(SEMVER_FILE),0.0.0))
 
 # support variables (_) and functions (.)
 _basewords := I I I I I I I I I I

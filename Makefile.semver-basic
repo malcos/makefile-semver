@@ -5,10 +5,6 @@ VERSION_METADATA ?=
 version.print:
 	@echo $(VERSION)
 
-version.init:
-	$(file > $(SEMVER_FILE),$(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH))
-	@echo $(VERSION_DATA)
-
 version.nextmajor:
 	$(eval VERSION_MAJOR = $(call .increment, $(VERSION_MAJOR)))
 	$(file > $(SEMVER_FILE),$(VERSION_MAJOR).0.0)
@@ -27,13 +23,14 @@ version.nextpatch:
 version.next: version.nextpatch
 
 # semver data
-_sv_data = $(or $(file < $(SEMVER_FILE)), 0.0.0)
+_sv_data = $(or $(strip $(file < $(SEMVER_FILE))), 0.0.0)
 VERSION_MAJOR := $(word 1, $(subst ., ,$(_sv_data)))
 VERSION_MINOR := $(word 2, $(subst ., ,$(_sv_data)))
 VERSION_PATCH := $(word 3, $(subst ., ,$(_sv_data)))
 VERSION_NUMBER = $(_sv_data)
 VERSION_DATA = $(VERSION_NUMBER)
 VERSION = $(VERSION_DATA)$(addprefix +,$(VERSION_METADATA))
+_:=$(or $(strip $(file < $(SEMVER_FILE))), $(file > $(SEMVER_FILE),0.0.0))
 
 # support variables (_) and functions (.)
 _basewords := I I I I I I I I I I

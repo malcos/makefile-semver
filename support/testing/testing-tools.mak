@@ -60,6 +60,12 @@ execute:
 	@echo "   execute $(ACTION), output was $(result)"
 
 #
+# does aboslutelly nothing, just infomrms that make ran (and did nothing)
+#
+callmake:
+	@echo "   calling make"
+
+#
 # executes the ACTION target and captures the output into TESTFILE
 #
 capture:

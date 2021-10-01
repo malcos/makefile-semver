@@ -21,9 +21,11 @@ runtests:
 	$(DO) setup VALUE="3.14.15-beta.42" VERSION_METADATA="git:7564" capture ACTION="version.print" verify EXPECTED="3.14.15-beta.42+git:7564"
 	$(DO) setup VALUE="0.0.0-beta.42" VERSION_METADATA="git:7564" capture ACTION="version.print" verify EXPECTED="0.0.0-beta.42+git:7564"
 
-	$(DO) header TEXT="version.init keeps existing data"
-	$(DO) setup VALUE="3.14.15-beta.42" execute ACTION="version.init" verify EXPECTED="3.14.15-beta.42"
-	$(DO) setup VALUE="100000.100000.100000-beta.42" execute ACTION="version.init" verify EXPECTED="100000.100000.100000-beta.42"
+	$(DO) header TEXT="just running make keeps existing data"
+	$(DO) setup VALUE="3.14.15-beta.42"
+	$(DO) callmake verify EXPECTED="3.14.15-beta.42"
+	$(DO) setup VALUE="100000.100000.100000-beta.42"
+	$(DO) callmake verify EXPECTED="100000.100000.100000-beta.42"
 
 	$(DO) header TEXT="Incrementing patch versions with version.nextpatch"
 	$(DO) setup VALUE="0.0.0-alphabase.99"

@@ -26,12 +26,15 @@ runtests:
 	$(DO) setup VALUE="3.14.15" VERSION_METADATA="git:7564" capture ACTION="version.print" verify EXPECTED="3.14.15+git:7564"
 	$(DO) setup VALUE="0.0.0" VERSION_METADATA="git:7564" capture ACTION="version.print" verify EXPECTED="0.0.0+git:7564"
 
-	$(DO) header TEXT="version.init writes zero version when no data present"
-	$(DO) setup VALUE="" execute ACTION="version.init" verify EXPECTED="0.0.0"
+	$(DO) header TEXT="just running make writes zero version when no data present"
+	$(DO) setup VALUE=""
+	$(DO) callmake verify EXPECTED="0.0.0"
 
-	$(DO) header TEXT="version.init keeps existing data"
-	$(DO) setup VALUE="3.14.15" execute ACTION="version.init" verify EXPECTED="3.14.15"
-	$(DO) setup VALUE="100000.100000.100000" execute ACTION="version.init" verify EXPECTED="100000.100000.100000"
+	$(DO) header TEXT="just running make keeps existing data"
+	$(DO) setup VALUE="3.14.15"
+	$(DO) callmake verify EXPECTED="3.14.15"
+	$(DO) setup VALUE="100000.100000.100000"
+	$(DO) callmake verify EXPECTED="100000.100000.100000"
 
 	$(DO) header TEXT="Incrementing patch versions with version.nextpatch"
 	$(DO) setup VALUE=""

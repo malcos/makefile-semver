@@ -11,6 +11,11 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 
 - Unit tests written in native Makefile
 - Guide for auto including the desired implementation
+- The `$(SEMVER_FILE)` is not initialized and created transparently  before first use
+
+### Removed
+
+- Target `version.init` removed since file are now created automatically
 
 ## [0.0.3] - 2021-09-21
 

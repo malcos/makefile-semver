@@ -1,4 +1,4 @@
-# makefile-semver (0.1.0-rc.1)
+# makefile-semver (0.1.0-rc.2)
 
 :: **Semantic Versioning (SemVer) implemented in GNU make** ::
 
@@ -78,7 +78,6 @@ These variables are intended to be read and utilized by the user creating a `Mak
 
 | Name | Description |
 | :-- | :-- |
-| `version.init` | Idempotent and non-destructive action which will create the `$(SEMVER_FILE)`. If the file does not exists then it will be effectively initialized with the value `0.0.0`. The use of this method is **not** mandatory since `$(SEMVER_FILE)` will be automatically created when invoking any action that modifies the version. |
 | `version.print` | Print `$(VERSION)` to the standard output. |
 | `version.nextmajor` | Increment `$(VERSION_MAJOR)` by one and update `$(SEMVER_FILE)` |
 | `version.nextminor` | Increment `$(VERSION_MINOR)` by one and update `$(SEMVER_FILE)` |
