@@ -7,6 +7,10 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 
 ## [Unreleased]
 
+(empty)
+
+## [0.1.0]
+
 ### Added
 
 - Unit tests written in native Makefile
@@ -52,6 +56,7 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 - First SemVer implementation supporting the simple format `MAJOR.MINOR.PATCH`
 
 [Unreleased]: https://github.com/malcos/makefile-semver/tree/master
+[0.1.0]: https://github.com/malcos/makefile-semver/tree/0.1.0
 [0.0.3]: https://github.com/malcos/makefile-semver/tree/0.0.3
 [0.0.2]: https://github.com/malcos/makefile-semver/tree/0.0.2
 [0.0.1]: https://github.com/malcos/makefile-semver/tree/0.0.1

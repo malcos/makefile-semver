@@ -47,6 +47,22 @@ _:=$(or $(wildcard Makefile.semver-basic), $(shell curl -sO https://raw.githubus
 include Makefile.semver-basic
 ```
 
+### Release Version [0.1.0](https://github.com/malcos/makefile-semver/tree/0.1.0)
+
+[Makefile.semver-complete](https://github.com/malcos/makefile-semver/blob/0.1.0/Makefile.semver-complete):
+
+```Makefile
+_:=$(or $(wildcard Makefile.semver-complete), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/0.1.0/Makefile.semver-complete))
+include Makefile.semver-complete
+```
+
+[Makefile.semver-basic](https://github.com/malcos/makefile-semver/blob/0.1.0/Makefile.semver-basic):
+
+```Makefile
+_:=$(or $(wildcard Makefile.semver-basic), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/0.1.0/Makefile.semver-basic))
+include Makefile.semver-basic
+```
+
 ### Release Version [0.0.3](https://github.com/malcos/makefile-semver/tree/0.0.3)
 
 [Makefile.semver-complete](https://github.com/malcos/makefile-semver/blob/0.0.3/Makefile.semver-complete):
