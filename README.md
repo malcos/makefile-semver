@@ -32,7 +32,7 @@ Options:
 
 - Paste the desired SemVer logic into your own `Makefile`
 - Download one of the implementation files listed above and [include](https://www.gnu.org/software/make/manual/html_node/Include.html) it.
-- [Automatically download an include the desired implementation](./support/docs/autoinclude.md).
+- [Automatically download an include the desired implementation](./support/docs/auto-include.md).
 
 ## Testing
 
@@ -105,3 +105,18 @@ The project logo at the top of this page uses the following assets:
 
 - The Semver 2.0.0 logo from the [semver.org assets](https://github.com/semver/semver.org/tree/gh-pages/assets) repository page
 - Alternative stylized GNU logo from [Wikimedia commons](https://commons.wikimedia.org/wiki/File:Logo_Gnu.svg) created by [Alvaro Ojeda](https://es.wikipedia.org/wiki/Usuario:Alvarojedab).
+
+## Other documents
+
+- [How to automatically download an include a specific implementation](./support/docs/auto-include.md).
+- [The release procedure and tagging](./support/docs/release-procedure.md).
+
+## Contributing
+
+This is a pet project. I'm not expecting contributions.
+
+Feel free to open an issue to report bugs, propose enhancements or new features. Or simply to say hello and have a chat.
+
+In all cases, I reserve the right of not fixing or implementing the requested feature.
+
+If you like this project, then feel free to buy me a beer the next time we meet at a demoparty.

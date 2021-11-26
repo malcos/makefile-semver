@@ -7,7 +7,9 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 
 ## [Unreleased]
 
-(empty)
+### Added
+
+- Documented the release procedure for new versions
 
 ## [0.1.0]
 
