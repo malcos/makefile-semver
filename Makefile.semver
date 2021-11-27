@@ -24,8 +24,6 @@ version.nextpatch:
 	$(file > $(SEMVER_FILE),$(VERSION_DATA))
 	@echo $(VERSION_DATA)
 
-version.next: version.nextpatch
-
 version.release:
 	$(eval VERSION_CYCLE_NAME = )
 	$(file > $(SEMVER_FILE),$(VERSION_DATA))

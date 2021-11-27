@@ -94,7 +94,6 @@ These variables are intended to be read and utilized by the user creating a `Mak
 | `version.nextmajor` | Increment `$(VERSION_MAJOR)` by one and update `$(SEMVER_FILE)` |
 | `version.nextminor` | Increment `$(VERSION_MINOR)` by one and update `$(SEMVER_FILE)` |
 | `version.nextpatch` | Increment `$(VERSION_PATCH)` by one and update `$(SEMVER_FILE)` |
-| `version.next` | Alias for `version.nextpatch` |
 | `version.tocycle.*` | Set `${VERSION_CYCLE_NAME}` and update `$(SEMVER_FILE)`. The placeholder `*` is one of the names declared in `$(SEMVER_CYCLES)`. Selecting the same value as currently active will have no effect on `$(VERSION_CYCLE_STEP)`, otherwise `$(VERSION_CYCLE_STEP)` will be reset to `1` |
 | `version.nextcycle` | Increment `$(VERSION_CYCLE_STEP)` by one and update `$(SEMVER_FILE)` |
 | `version.release` | Clear `$(VERSION_CYCLE_NAME)` and update `$(SEMVER_FILE)`, effectively removing the pre release cycle name and stepping from the version data |
