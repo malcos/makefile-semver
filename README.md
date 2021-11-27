@@ -29,27 +29,38 @@ Optional user-defined pre-release cycles using numeric steps (SemVer [#9](https:
 
 You have at least three options on how to integrate the logic of this project into your own `Makefile`:
 
-### Option 1: Copy Paste
+- **Option 1 / Copy Paste**: Paste the contents of the file [Makefile.semver](./Makefile.semver) at the end of your own `Makefile`.
 
-Paste the contents of the file [Makefile.semver](./Makefile.semver) at the end of your own `Makefile`.
+- **Option 2 / Download and include**: Download the file [Makefile.semver](./Makefile.semver) and [include](https://www.gnu.org/software/make/manual/html_node/Include.html) it from your `Makefile`
 
-This is the most simple integration but at the cost of bloating your main `Makefile`.
+- **Option 3: Automatic download and include**: This method requires an Internet connection and `curl` pre installed. Detailed information is available in the document: [Automatically download an include the desired implementation](./support/docs/auto-include.md).
 
-### Option 2: Download and include
+Shortcuts for option 3 in the following sub chapters:
 
-Download the file [Makefile.semver](./Makefile.semver) and [include](https://www.gnu.org/software/make/manual/html_node/Include.html) it from your `Makefile`
+### Latest Version from [master](https://github.com/malcos/makefile-semver/tree/master) branch (it will eventually break)
 
-This strategy will keep your `Makefile` lean at the cost of having an additional file in your project.
+[Makefile.semver](https://github.com/malcos/makefile-semver/blob/master/Makefile.semver):
 
-### Option 3: Automatic download and include
+```Makefile
+_:=$(or $(wildcard Makefile.semver), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/master/Makefile.semver))
+include Makefile.semver
+```
 
-For this to work you need `curl` installed in your system, follow the instructions provided in [Automatically download and include the desired implementation](./support/docs/auto-include.md).
+### Latest Release Version [0.1.0](https://github.com/malcos/makefile-semver/tree/0.1.0)
 
-Notice that the download will only trigger if the file is not yet present in your local file system.
+[Makefile.semver-complete](https://github.com/malcos/makefile-semver/blob/0.1.0/Makefile.semver-complete):
 
-Now you can add an entry in your `.gitignore` or `.hgignore` for `Makefile.semver`.
+```Makefile
+_:=$(or $(wildcard Makefile.semver-complete), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/0.1.0/Makefile.semver-complete))
+include Makefile.semver-complete
+```
 
-This strategy comes at the cost of depending on an internet connection and being prone to fail if the system lacks of the download tool of choice. It requires only two lines at the end of your `Makefile`
+[Makefile.semver-basic](https://github.com/malcos/makefile-semver/blob/0.1.0/Makefile.semver-basic):
+
+```Makefile
+_:=$(or $(wildcard Makefile.semver-basic), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/0.1.0/Makefile.semver-basic))
+include Makefile.semver-basic
+```
 
 ## Testing
 
