@@ -3,9 +3,6 @@
 # or being afected by the numberic part of the version (MAJOR.MINOR.PATCH) and/or
 # the volatile build metadata.
 #
-# This module can be used to test the common functionality of Makefile.semver-basic
-# and Makefile.semver-complete
-#
 
 runtests:
 

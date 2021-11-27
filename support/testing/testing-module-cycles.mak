@@ -2,8 +2,7 @@
 # This test suite is intended to verify the correct behaviour of actions affecting
 # or being afected by the release cycles and optionally the build metadata.
 #
-# This module can be used to test the common functionality of Makefile.semver-complete
-#
+
 
 runtests:
 

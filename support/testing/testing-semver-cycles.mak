@@ -1,6 +1,6 @@
-# preparing to test Makefile.semver-complete
+# preparing to test Makefile.semver
 include testing-tools.mak
-include ../../Makefile.semver-complete
+include ../../Makefile.semver
 
 # load the test module
 include testing-module-cycles.mak
