@@ -1,4 +1,4 @@
-# makefile-semver (0.2.0-beta.1)
+# makefile-semver (0.2.0-rc.1)
 
 :: **Semantic Versioning (SemVer) implemented in GNU make** ::
 
@@ -65,7 +65,7 @@ You can override the default values of the configuration variables at the beginn
 
 | Name | Default value | Description |
 | :-- | :-- | :-- |
-| `SEMVER_FILE` | `SEMVER.data` | Filename used to store and retrieve the version data. The contents are in plain semantic versioning format |
+| `SEMVER_FILE` | `VERSION.data` | Filename used to store and retrieve the version data. The contents are in plain semantic versioning format |
 | `SEMVER_CYCLES` | `alpha beta rc`| The pre release cycle names to be supported under the `version.tocycle.*` target. Using dashes (`-`) and dots (`.`) in the names will cause problems |
 | `VERSION_METADATA` | | A user defined variable providing **volatile** and **non persistent** build metadata for inclusion in the version string. |
 

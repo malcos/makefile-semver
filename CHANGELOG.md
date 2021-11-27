@@ -14,6 +14,7 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 ### Changed
 
 - `Makefile.semver-complete` is now `Makefile.semver` and becomes the only offered implementation
+- `$(SEMVER_FILE)` now defaults to `VERSION.data`, making it correlate with the variable `$(VERSION_DATA )`
 
 ### Removed
 

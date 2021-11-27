@@ -6,7 +6,7 @@ Notice that when linking to the new version you will need to create links agains
 
 ## Update the documentation
 
-- edit `SEMVER.data`
+- edit `VERSION.data`
   - remove the cycle information with `make version.release`
 - edit `support/docs/auto-include.md`
   - append new version snippets after the latest one from `master`

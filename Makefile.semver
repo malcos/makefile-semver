@@ -1,5 +1,5 @@
 # input variables and defaults
-SEMVER_FILE ?= SEMVER.data
+SEMVER_FILE ?= VERSION.data
 SEMVER_CYCLES ?= alpha beta rc
 VERSION_METADATA ?=
 
