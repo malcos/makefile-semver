@@ -9,7 +9,15 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 
 ### Added
 
-- Documented the release procedure for new versions
+- Documentation of release procedure for new versions
+
+### Changed
+
+- `Makefile.semver-complete` is now `Makefile.semver` and becomes the only offered implementation
+
+### Removed
+
+- `Makefile.semver-simple` is no more
 
 ## [0.1.0]
 

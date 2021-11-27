@@ -33,18 +33,11 @@ It is recommended to put these lines at the very end of your `Makefile`
 
 ### Latest Version from [master](https://github.com/malcos/makefile-semver/tree/master) branch (it may break)
 
-[Makefile.semver-complete](https://github.com/malcos/makefile-semver/blob/master/Makefile.semver-complete):
+[Makefile.semver](https://github.com/malcos/makefile-semver/blob/master/Makefile.semver):
 
 ```Makefile
-_:=$(or $(wildcard Makefile.semver-complete), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/master/Makefile.semver-complete))
-include Makefile.semver-complete
-```
-
-[Makefile.semver-basic](https://github.com/malcos/makefile-semver/blob/master/Makefile.semver-basic):
-
-```Makefile
-_:=$(or $(wildcard Makefile.semver-basic), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/master/Makefile.semver-basic))
-include Makefile.semver-basic
+_:=$(or $(wildcard Makefile.semver), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/master/Makefile.semver))
+include Makefile.semver
 ```
 
 ### Release Version [0.1.0](https://github.com/malcos/makefile-semver/tree/0.1.0)
