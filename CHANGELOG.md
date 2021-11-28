@@ -19,7 +19,7 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 ### Removed
 
 - `Makefile.semver-simple` is no more
-- Goal `version.next` is now a planned feature and will change behavior
+- Goal `version.next` is now a planned feature for [0.2.1] and will change behavior
 
 ## [0.1.0]
 

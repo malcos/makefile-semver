@@ -1,4 +1,4 @@
-# makefile-semver (0.2.0-rc.1)
+# makefile-semver (0.2.0-alpha.2)
 
 :: **Semantic Versioning (SemVer) implemented in GNU make** ::
 
