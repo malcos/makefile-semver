@@ -1,5 +1,5 @@
 # input variables and defaults
-SEMVER_FILE ?= VERSION.data
+VERSION_FILE ?= VERSION.data
 SEMVER_CYCLES ?= alpha beta rc
 VERSION_METADATA ?=
 
@@ -10,39 +10,39 @@ version.nextmajor:
 	$(eval VERSION_MAJOR = $(call .increment, $(VERSION_MAJOR)))
 	$(eval VERSION_MINOR = 0)
 	$(eval VERSION_PATCH = 0)
-	$(file > $(SEMVER_FILE),$(VERSION_DATA))
+	$(file > $(VERSION_FILE),$(VERSION_DATA))
 	@echo $(VERSION_DATA)
 
 version.nextminor:
 	$(eval VERSION_MINOR = $(call .increment, $(VERSION_MINOR)))
 	$(eval VERSION_PATCH = 0)
-	$(file > $(SEMVER_FILE),$(VERSION_DATA))
+	$(file > $(VERSION_FILE),$(VERSION_DATA))
 	@echo $(VERSION_DATA)
 
 version.nextpatch:
 	$(eval VERSION_PATCH = $(call .increment, $(VERSION_PATCH)))
-	$(file > $(SEMVER_FILE),$(VERSION_DATA))
+	$(file > $(VERSION_FILE),$(VERSION_DATA))
 	@echo $(VERSION_DATA)
 
 version.release:
 	$(eval VERSION_CYCLE_NAME = )
-	$(file > $(SEMVER_FILE),$(VERSION_DATA))
+	$(file > $(VERSION_FILE),$(VERSION_DATA))
 	@echo $(VERSION_DATA)
 
 $(addprefix version.tocycle.,$(SEMVER_CYCLES)):
 	$(eval _sv_cycle_name = $(lastword $(subst ., ,$@)))
 	$(eval VERSION_CYCLE_STEP=$(if $(filter $(_sv_cycle_name),$(VERSION_CYCLE_NAME)),$(VERSION_CYCLE_STEP),1))
 	$(eval VERSION_CYCLE_NAME = $(_sv_cycle_name))
-	$(file > $(SEMVER_FILE),$(VERSION_DATA))
+	$(file > $(VERSION_FILE),$(VERSION_DATA))
 	@echo $(VERSION_DATA)
 
 version.nextcycle:
 	$(eval VERSION_CYCLE_STEP = $(call .increment, $(VERSION_CYCLE_STEP)))
-	$(file > $(SEMVER_FILE),$(VERSION_DATA))
+	$(file > $(VERSION_FILE),$(VERSION_DATA))
 	@echo $(VERSION_DATA)
 
 # semver data
-_sv_data := $(file < $(strip $(SEMVER_FILE)))
+_sv_data := $(file < $(strip $(VERSION_FILE)))
 _sv_mmp := $(subst ., ,$(word 1, $(subst -, ,$(_sv_data))))
 _sv_cycle := $(subst ., ,$(word 2, $(subst -, ,$(_sv_data))))
 VERSION_MAJOR := $(or $(word 1, $(_sv_mmp)), 0)
@@ -54,7 +54,7 @@ VERSION_NUMBER = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 VERSION_CYCLE = $(and $(VERSION_CYCLE_NAME), $(VERSION_CYCLE_NAME).$(VERSION_CYCLE_STEP))
 VERSION_DATA = $(VERSION_NUMBER)$(addprefix -,$(VERSION_CYCLE))
 VERSION = $(VERSION_DATA)$(addprefix +,$(VERSION_METADATA))
-_:=$(or $(strip $(file < $(SEMVER_FILE))), $(file > $(SEMVER_FILE),0.0.0))
+_:=$(or $(strip $(file < $(VERSION_FILE))), $(file > $(VERSION_FILE),0.0.0))
 
 # support variables (_) and functions (.)
 _basewords := I I I I I I I I I I

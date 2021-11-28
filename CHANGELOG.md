@@ -14,7 +14,9 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 ### Changed
 
 - `Makefile.semver-complete` is now `Makefile.semver` and becomes the only offered implementation
-- `$(SEMVER_FILE)` now defaults to `VERSION.data`, making it correlate with the variable `$(VERSION_DATA )`
+- `$(SEMVER_FILE)` / `$(VERSION_FILE)` now defaults to `VERSION.data`, making it correlate with the variable `$(VERSION_DATA )`
+- `$(SEMVER_FILE)` is now `$(VERSION_FILE)`
+- `$(SEMVER_CYCLES)` is now `$(VERSION_CYCLES)`
 
 ### Removed
 
@@ -27,7 +29,7 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 
 - Unit tests written in native Makefile
 - Guide for auto including the desired implementation
-- The `$(SEMVER_FILE)` is not initialized and created transparently  before first use
+- The `$(SEMVER_FILE)` is now initialized and created transparently before first use
 
 ### Removed
 

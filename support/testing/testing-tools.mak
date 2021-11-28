@@ -4,9 +4,9 @@
 # This file provide the basic tools for writting tests for this specific project
 #
 
-# place to store test resutls, aliased to the SEMVER_FILE variable
+# place to store test resutls, aliased to the VERSION_FILE variable
 TESTFILE := testing.out
-SEMVER_FILE := $(TESTFILE)
+VERSION_FILE := $(TESTFILE)
 
 # default overrides
 SEMVER_CYCLES = alphabase betatest

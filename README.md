@@ -76,7 +76,7 @@ You can override the default values of the configuration variables at the beginn
 
 | Name | Default value | Description |
 | :-- | :-- | :-- |
-| `SEMVER_FILE` | `VERSION.data` | Filename used to store and retrieve the version data. The contents are in plain semantic versioning format |
+| `VERSION_FILE` | `VERSION.data` | Filename used to store and retrieve the version data. The contents are in plain semantic versioning format |
 | `SEMVER_CYCLES` | `alpha beta rc`| The pre release cycle names to be supported under the `version.tocycle.*` target. Using dashes (`-`) and dots (`.`) in the names will cause problems |
 | `VERSION_METADATA` | | A user defined variable providing **volatile** and **non persistent** build metadata for inclusion in the version string. |
 
@@ -87,7 +87,7 @@ These variables are intended to be read and utilized by the user creating a `Mak
 | Name | example | Description |
 | :-- | :-- | :-- |
 | `VERSION` | `3.14.15-rc.2+git:cf34d2a` | The full and most complete version string as the implementation can provide. It is comprised of `$(VERSION_DATA)` and `$(VERSION_METADATA)` |
-| `VERSION_DATA` | `3.14.15-rc.2` | The persistent version data as stored in `$(SEMVER_FILE)`. It's the combination of `$(VERSION_NUMBER)` and the optional `$(VERSION_CYCLE)` |
+| `VERSION_DATA` | `3.14.15-rc.2` | The persistent version data as stored in `$(VERSION_FILE)`. It's the combination of `$(VERSION_NUMBER)` and the optional `$(VERSION_CYCLE)` |
 | `VERSION_METADATA` | `git:cf34d2a` | See [Configuration Variables](#configuration-variables) |
 | `VERSION_NUMBER` | `3.14.15` | The numeric part of the version formatted as `MAJOR`.`MINOR`.`PATCH` |
 | `VERSION_MAJOR` | `3` | The major version number from `$(VERSION_NUMBER)` |
@@ -102,12 +102,12 @@ These variables are intended to be read and utilized by the user creating a `Mak
 | Name | Description |
 | :-- | :-- |
 | `version.print` | Print `$(VERSION)` to the standard output. |
-| `version.nextmajor` | Increment `$(VERSION_MAJOR)` by one and update `$(SEMVER_FILE)` |
-| `version.nextminor` | Increment `$(VERSION_MINOR)` by one and update `$(SEMVER_FILE)` |
-| `version.nextpatch` | Increment `$(VERSION_PATCH)` by one and update `$(SEMVER_FILE)` |
-| `version.tocycle.*` | Set `${VERSION_CYCLE_NAME}` and update `$(SEMVER_FILE)`. The placeholder `*` is one of the names declared in `$(SEMVER_CYCLES)`. Selecting the same value as currently active will have no effect on `$(VERSION_CYCLE_STEP)`, otherwise `$(VERSION_CYCLE_STEP)` will be reset to `1` |
-| `version.nextcycle` | Increment `$(VERSION_CYCLE_STEP)` by one and update `$(SEMVER_FILE)` |
-| `version.release` | Clear `$(VERSION_CYCLE_NAME)` and update `$(SEMVER_FILE)`, effectively removing the pre release cycle name and stepping from the version data |
+| `version.nextmajor` | Increment `$(VERSION_MAJOR)` by one and update `$(VERSION_FILE)` |
+| `version.nextminor` | Increment `$(VERSION_MINOR)` by one and update `$(VERSION_FILE)` |
+| `version.nextpatch` | Increment `$(VERSION_PATCH)` by one and update `$(VERSION_FILE)` |
+| `version.tocycle.*` | Set `${VERSION_CYCLE_NAME}` and update `$(VERSION_FILE)`. The placeholder `*` is one of the names declared in `$(SEMVER_CYCLES)`. Selecting the same value as currently active will have no effect on `$(VERSION_CYCLE_STEP)`, otherwise `$(VERSION_CYCLE_STEP)` will be reset to `1` |
+| `version.nextcycle` | Increment `$(VERSION_CYCLE_STEP)` by one and update `$(VERSION_FILE)` |
+| `version.release` | Clear `$(VERSION_CYCLE_NAME)` and update `$(VERSION_FILE)`, effectively removing the pre release cycle name and stepping from the version data |
 
 ## Limitations
 
