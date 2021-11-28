@@ -1,6 +1,6 @@
 # input variables and defaults
 VERSION_FILE ?= VERSION.data
-SEMVER_CYCLES ?= alpha beta rc
+VERSION_CYCLES ?= alpha beta rc
 VERSION_METADATA ?=
 
 version.print:
@@ -29,7 +29,7 @@ version.release:
 	$(file > $(VERSION_FILE),$(VERSION_DATA))
 	@echo $(VERSION_DATA)
 
-$(addprefix version.tocycle.,$(SEMVER_CYCLES)):
+$(addprefix version.tocycle.,$(VERSION_CYCLES)):
 	$(eval _sv_cycle_name = $(lastword $(subst ., ,$@)))
 	$(eval VERSION_CYCLE_STEP=$(if $(filter $(_sv_cycle_name),$(VERSION_CYCLE_NAME)),$(VERSION_CYCLE_STEP),1))
 	$(eval VERSION_CYCLE_NAME = $(_sv_cycle_name))
