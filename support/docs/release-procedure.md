@@ -103,9 +103,10 @@ Tag the current commit
 git tag $(VERSION) master
 ```
 
-And push the changes
+And push the changes and immediately push the new tag
 
 ```Bash
+git push
 git push origin $(VERSION)
 ```
 
