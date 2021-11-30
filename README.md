@@ -1,4 +1,4 @@
-# makefile-semver (0.2.0-alpha.2)
+# makefile-semver (0.2.0)
 
 :: **Semantic Versioning (SemVer) implemented in GNU make** ::
 
@@ -35,31 +35,13 @@ You have at least three options on how to integrate the logic of this project in
 
 - **Option 3: Automatic download and include**: This method requires an Internet connection and `curl` pre installed. Detailed information is available in the document: [Automatically download an include the desired implementation](./support/docs/auto-include.md).
 
-Shortcuts for option 3 in the following sub chapters:
+### Release Version [0.2.0](https://github.com/malcos/makefile-semver/tree/0.2.0)
 
-### Latest Version from [master](https://github.com/malcos/makefile-semver/tree/master) branch (it will eventually break)
-
-[Makefile.semver](https://github.com/malcos/makefile-semver/blob/master/Makefile.semver):
+[Makefile.semver](https://github.com/malcos/makefile-semver/blob/0.2.0/Makefile.semver):
 
 ```Makefile
-_:=$(or $(wildcard Makefile.semver), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/master/Makefile.semver))
+_:=$(or $(wildcard Makefile.semver), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/0.2.0/Makefile.semver))
 include Makefile.semver
-```
-
-### Latest Release Version [0.1.0](https://github.com/malcos/makefile-semver/tree/0.1.0)
-
-[Makefile.semver-complete](https://github.com/malcos/makefile-semver/blob/0.1.0/Makefile.semver-complete):
-
-```Makefile
-_:=$(or $(wildcard Makefile.semver-complete), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/0.1.0/Makefile.semver-complete))
-include Makefile.semver-complete
-```
-
-[Makefile.semver-basic](https://github.com/malcos/makefile-semver/blob/0.1.0/Makefile.semver-basic):
-
-```Makefile
-_:=$(or $(wildcard Makefile.semver-basic), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/0.1.0/Makefile.semver-basic))
-include Makefile.semver-basic
 ```
 
 ## Testing
@@ -135,7 +117,3 @@ The project logo at the top of this page is a creation of mine and uses the foll
 This is a pet project. I'm not expecting contributions.
 
 Feel free to open an issue to report bugs, propose enhancements or ask for new features. Or simply to say hello and have a chat.
-
-In all cases, I reserve the right of not fulfilling requests if I deem them as not necessary or out of scope.
-
-If you like this project feel free to buy me a beer the next time we meet at a demoparty.
