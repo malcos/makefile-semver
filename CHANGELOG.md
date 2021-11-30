@@ -9,7 +9,7 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 
 (empty)
 
-## [0.2.0]
+## [0.2.0] - 2021-11-30
 
 ### Added
 
@@ -27,7 +27,7 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 - `Makefile.semver-simple` is no more
 - Goal `version.next` is now a planned feature for [0.2.1] and will change behavior
 
-## [0.1.0]
+## [0.1.0] - 2021-10-01
 
 ### Added
 

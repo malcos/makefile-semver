@@ -33,7 +33,7 @@ You have at least three options on how to integrate the logic of this project in
 
 - **Option 2 / Download and include**: Download the file [Makefile.semver](./Makefile.semver) and [include](https://www.gnu.org/software/make/manual/html_node/Include.html) it from your `Makefile`
 
-- **Option 3: Automatic download and include**: This method requires an Internet connection and `curl` pre installed. Detailed information is available in the document: [Automatically download an include the desired implementation](./support/docs/auto-include.md).
+- **Option 3: Automatic download and include**: This method requires an Internet connection and `curl` pre installed. Detailed information is available in the document: [Transparently including the SemVer implementation](./support/docs/auto-include.md).
 
 ### Release Version [0.2.0](https://github.com/malcos/makefile-semver/tree/0.2.0)
 
@@ -100,17 +100,18 @@ All numeric values managed by the logic are limited to a range between `0` (zero
 
 This affects the variables `$(VERSION_MAJOR)`, `$(VERSION_MINOR)`, `$(VERSION_PATCH)` and `$(VERSION_CYCLE_STEP)`.
 
+## Other documents
+
+- [Transparently including the SemVer implementation](./support/docs/auto-include.md).
+- [The release procedure and tagging](./support/docs/release-procedure.md).
+- [Change log for this project](./CHANGELOG.md)
+
 ## Credits
 
 The project logo at the top of this page is a creation of mine and uses the following assets:
 
 - The Semver 2.0.0 logo from the [semver.org assets](https://github.com/semver/semver.org/tree/gh-pages/assets) repository page
 - Alternative stylized GNU logo from [Wikimedia commons](https://commons.wikimedia.org/wiki/File:Logo_Gnu.svg) created by [Alvaro Ojeda](https://es.wikipedia.org/wiki/Usuario:Alvarojedab).
-
-## Other documents
-
-- [How to automatically download an include a specific implementation](./support/docs/auto-include.md).
-- [The release procedure and tagging](./support/docs/release-procedure.md).
 
 ## Contributing
 

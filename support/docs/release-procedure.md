@@ -6,6 +6,7 @@ All examples may contain placeholders you need to replace:
 
 - `$(VERSION)` : The version string of the current release
 - `$(FILENAME)` : The name of the implementation, currently `Makefile.semver`
+- `$(STAMP)` : Release stamp in the format `YYYY-MM-DD`, needed only for the change log
 
 ## Close development branch
 
@@ -76,7 +77,7 @@ Rename the `Unreleased` to the current release version
 Should become
 
 ```Markdown
-## [$(VERSION)]
+## [$(VERSION)] - $(STAMP)
 ```
 
 Append a new `Unreleased` section at the top again, set `(empty)` as content.
