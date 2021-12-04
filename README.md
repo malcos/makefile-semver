@@ -1,4 +1,4 @@
-# makefile-semver (0.3.0-rc.1)
+# makefile-semver (0.3.0)
 
 :: **Semantic Versioning (SemVer) implemented in GNU make** ::
 
@@ -35,12 +35,12 @@ You have at least three options on how to integrate the logic of this project in
 
 - **Option 3: Automatic download and include**: This method requires an Internet connection and `curl` pre installed. Detailed information is available in the document: [Transparently including the SemVer implementation](./support/docs/auto-include.md).
 
-### Release Version [0.2.0](https://github.com/malcos/makefile-semver/tree/0.2.0)
+### Release Version [0.3.0](https://github.com/malcos/makefile-semver/tree/0.3.0)
 
-[Makefile.semver](https://github.com/malcos/makefile-semver/blob/0.2.0/Makefile.semver):
+[Makefile.semver](https://github.com/malcos/makefile-semver/blob/0.3.0/Makefile.semver):
 
 ```Makefile
-_:=$(or $(wildcard Makefile.semver), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/0.2.0/Makefile.semver))
+_:=$(or $(wildcard Makefile.semver), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/0.3.0/Makefile.semver))
 include Makefile.semver
 ```
 

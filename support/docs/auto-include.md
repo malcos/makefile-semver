@@ -31,6 +31,15 @@ This document will use `curl` since it is a common tool found under Linux, Darwi
 
 It is recommended to put these lines at the very end of your `Makefile`
 
+### Release Version [0.3.0](https://github.com/malcos/makefile-semver/tree/0.3.0)
+
+[Makefile.semver](https://github.com/malcos/makefile-semver/blob/0.3.0/Makefile.semver):
+
+```Makefile
+_:=$(or $(wildcard Makefile.semver), $(shell curl -sO https://raw.githubusercontent.com/malcos/makefile-semver/0.3.0/Makefile.semver))
+include Makefile.semver
+```
+
 ### Release Version [0.2.0](https://github.com/malcos/makefile-semver/tree/0.2.0)
 
 [Makefile.semver](https://github.com/malcos/makefile-semver/blob/0.2.0/Makefile.semver):
