@@ -52,7 +52,7 @@ $(addprefix version.tocycle.,$(VERSION_CYCLES)):
 	$(file > $(VERSION_FILE),$(VERSION_DATA))
 	@echo $(VERSION_DATA)
 
-version.nextcycle:
+version.nextcyclestep:
 	$(eval VERSION_CYCLE_STEP = $(call .increment, $(VERSION_CYCLE_STEP)))
 	$(file > $(VERSION_FILE),$(VERSION_DATA))
 	@echo $(VERSION_DATA)
