@@ -3,6 +3,22 @@ VERSION_FILE ?= VERSION.data
 VERSION_CYCLES ?= alpha beta rc
 VERSION_METADATA ?=
 
+# read semver data from file
+_sv_data := $(file < $(strip $(VERSION_FILE)))
+_sv_mmp := $(subst ., ,$(word 1, $(subst -, ,$(_sv_data))))
+_sv_cycle := $(subst ., ,$(word 2, $(subst -, ,$(_sv_data))))
+
+# output variables
+VERSION_MAJOR := $(or $(word 1, $(_sv_mmp)), 0)
+VERSION_MINOR := $(or $(word 2, $(_sv_mmp)), 0)
+VERSION_PATCH := $(or $(word 3, $(_sv_mmp)), 0)
+VERSION_CYCLE_NAME := $(word 1, $(_sv_cycle))
+VERSION_CYCLE_STEP := $(or $(word 2, $(_sv_cycle)), 1)
+VERSION_NUMBER = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
+VERSION_CYCLE = $(and $(VERSION_CYCLE_NAME), $(VERSION_CYCLE_NAME).$(VERSION_CYCLE_STEP))
+VERSION_DATA = $(VERSION_NUMBER)$(addprefix -,$(VERSION_CYCLE))
+VERSION = $(VERSION_DATA)$(addprefix +,$(VERSION_METADATA))
+
 version.print:
 	@echo $(VERSION)
 
@@ -41,22 +57,10 @@ version.nextcycle:
 	$(file > $(VERSION_FILE),$(VERSION_DATA))
 	@echo $(VERSION_DATA)
 
-# semver data
-_sv_data := $(file < $(strip $(VERSION_FILE)))
-_sv_mmp := $(subst ., ,$(word 1, $(subst -, ,$(_sv_data))))
-_sv_cycle := $(subst ., ,$(word 2, $(subst -, ,$(_sv_data))))
-VERSION_MAJOR := $(or $(word 1, $(_sv_mmp)), 0)
-VERSION_MINOR := $(or $(word 2, $(_sv_mmp)), 0)
-VERSION_PATCH := $(or $(word 3, $(_sv_mmp)), 0)
-VERSION_CYCLE_NAME := $(word 1, $(_sv_cycle))
-VERSION_CYCLE_STEP := $(or $(word 2, $(_sv_cycle)), 1)
-VERSION_NUMBER = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
-VERSION_CYCLE = $(and $(VERSION_CYCLE_NAME), $(VERSION_CYCLE_NAME).$(VERSION_CYCLE_STEP))
-VERSION_DATA = $(VERSION_NUMBER)$(addprefix -,$(VERSION_CYCLE))
-VERSION = $(VERSION_DATA)$(addprefix +,$(VERSION_METADATA))
-_:=$(or $(strip $(file < $(VERSION_FILE))), $(file > $(VERSION_FILE),0.0.0))
-
 # support variables (_) and functions (.)
 _basewords := I I I I I I I I I I
 _maxwords = $(foreach _,$(_basewords),$(foreach _,$(_basewords),$(foreach _,$(_basewords),$(foreach _,$(_basewords),$(_basewords)))))
 .increment = $(words $(wordlist 1,$1,$(_maxwords)) I)
+
+# create file if absent, defaults to 0.0.0
+_:=$(or $(strip $(file < $(VERSION_FILE))), $(file > $(VERSION_FILE),0.0.0))
