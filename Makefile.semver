@@ -64,6 +64,3 @@ version.nextcyclestep:
 _basewords := I I I I I I I I I I
 _maxwords = $(foreach _,$(_basewords),$(foreach _,$(_basewords),$(foreach _,$(_basewords),$(foreach _,$(_basewords),$(_basewords)))))
 .increment = $(words $(wordlist 1,$1,$(_maxwords)) I)
-
-# create file if absent, defaults to 0.0.0
-_:=$(or $(strip $(file < $(VERSION_FILE))), $(file > $(VERSION_FILE),0.0.0))
