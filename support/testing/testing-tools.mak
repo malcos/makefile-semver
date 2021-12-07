@@ -9,13 +9,13 @@ TESTFILE := testing.out
 VERSION_FILE := $(TESTFILE)
 
 # default overrides
-VERSION_CYCLES = alphabase betatest
+VERSION_CYCLES ?= alphabase betatest
 
 # variable which reads the contents of TESTFILE when referenced
 GOT = $(file < $(TESTFILE))
 
 # make command boostraped with main test suite file, RUN is a natural command with echo, DO is suppressing the echo
-RUN := $(MAKE) --no-print-directory --always-make --makefile=$(firstword $(MAKEFILE_LIST)) VERSION_METADATA=$(VERSION_METADATA)
+RUN := $(MAKE) --no-print-directory --always-make --makefile=$(firstword $(MAKEFILE_LIST)) VERSION_METADATA=$(VERSION_METADATA) VERSION_CYCLES="$(VERSION_CYCLES)"
 DO := @$(RUN)
 
 #

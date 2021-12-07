@@ -239,6 +239,12 @@ runtests:
 	$(DO) setup VALUE="1.2.3-betatest.99999" execute ACTION="version.nextcyclestep" verify EXPECTED="1.2.3-betatest.100000"
 	$(DO) setup VALUE="1.2.3-betatest.100000" execute ACTION="version.nextcyclestep" verify EXPECTED="1.2.3-betatest.100001"
 
+	$(DO) header TEXT="version.nextcyclestep will increment when version is first initialized with a cycle"
+	$(DO) setup VALUE="" execute ACTION="version.nextcyclestep" verify EXPECTED="0.0.0-alphabase.2"
+
+	$(DO) header TEXT="version.nextcyclestep is idenpotent when version is first initialized without a cycle"
+	$(DO) VERSION_CYCLES="" setup VALUE="" execute ACTION="version.nextcyclestep" verify EXPECTED="0.0.0"
+
 	$(DO) header TEXT="version.nextcyclestep is idempotent when cycle name is not defined"
-	$(DO) setup VALUE="" execute ACTION="version.nextcyclestep" verify EXPECTED="0.0.0"
+	$(DO) setup VALUE="0.0.0" execute ACTION="version.nextcyclestep" verify EXPECTED="0.0.0"
 	$(DO) setup VALUE="3.14.15" execute ACTION="version.nextcyclestep" verify EXPECTED="3.14.15"

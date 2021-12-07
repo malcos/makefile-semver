@@ -12,8 +12,11 @@ runtests:
 	$(DO) setup VALUE="IO data" verify EXPECTED="IO data"
 	$(DO) setup VALUE="" verify EXPECTED=""
 
-	$(DO) header TEXT="Default empty version"
-	$(DO) setup VALUE="" capture ACTION="version.print" verify EXPECTED="0.0.0"
+	$(DO) header TEXT="Default empty version with cycle"
+	$(DO) setup VALUE="" capture ACTION="version.print" verify EXPECTED="0.0.0-alphabase.1"
+
+	$(DO) header TEXT="Default empty version without cycle"
+	$(DO) VERSION_CYCLES="" setup VALUE="" capture ACTION="version.print" verify EXPECTED="0.0.0"
 
 	$(DO) header TEXT="Print version without metadata set"
 	$(DO) setup VALUE="3.14.15" capture ACTION="version.print" verify EXPECTED="3.14.15"
@@ -25,7 +28,9 @@ runtests:
 
 	$(DO) header TEXT="just running make writes zero version when no data present"
 	$(DO) setup VALUE=""
-	$(DO) callmake verify EXPECTED="0.0.0"
+	$(DO) callmake verify EXPECTED="0.0.0-alphabase.1"
+	$(DO) setup VALUE=""
+	$(DO) VERSION_CYCLES="" callmake verify EXPECTED="0.0.0"
 
 	$(DO) header TEXT="just running make keeps existing data"
 	$(DO) setup VALUE="3.14.15"
@@ -34,7 +39,7 @@ runtests:
 	$(DO) callmake verify EXPECTED="100000.100000.100000"
 
 	$(DO) header TEXT="Incrementing patch versions with version.nextpatch"
-	$(DO) setup VALUE=""
+	$(DO) setup VALUE="0.0.0"
 	$(DO) execute ACTION="version.nextpatch" verify EXPECTED="0.0.1"
 	$(DO) execute ACTION="version.nextpatch" verify EXPECTED="0.0.2"
 	$(DO) execute ACTION="version.nextpatch" verify EXPECTED="0.0.3"
@@ -74,7 +79,7 @@ runtests:
 # 	$(DO) setup VALUE="0.0.100000" execute ACTION="version.next" verify EXPECTED="0.0.100001"
 
 	$(DO) header TEXT="Incrementing minor versions"
-	$(DO) setup VALUE=""
+	$(DO) setup VALUE="0.0.0"
 	$(DO) execute ACTION="version.nextminor" verify EXPECTED="0.1.0"
 	$(DO) execute ACTION="version.nextminor" verify EXPECTED="0.2.0"
 	$(DO) execute ACTION="version.nextminor" verify EXPECTED="0.3.0"
@@ -94,7 +99,7 @@ runtests:
 	$(DO) setup VALUE="0.100000.0" execute ACTION="version.nextminor" verify EXPECTED="0.100001.0"
 
 	$(DO) header TEXT="Incrementing major versions"
-	$(DO) setup VALUE=""
+	$(DO) setup VALUE="0.0.0"
 	$(DO) execute ACTION="version.nextmajor" verify EXPECTED="1.0.0"
 	$(DO) execute ACTION="version.nextmajor" verify EXPECTED="2.0.0"
 	$(DO) execute ACTION="version.nextmajor" verify EXPECTED="3.0.0"

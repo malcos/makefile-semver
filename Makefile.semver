@@ -3,6 +3,9 @@ VERSION_FILE ?= VERSION.data
 VERSION_CYCLES ?= alpha beta rc
 VERSION_METADATA ?=
 
+# create file if absent, defaults to 0.0.0(-1stcycle.1)
+_:=$(or $(strip $(file < $(VERSION_FILE))), $(file > $(VERSION_FILE),0.0.0$(addprefix -,$(and $(word 1, $(VERSION_CYCLES)), $(word 1, $(VERSION_CYCLES)).1))))
+
 # read semver data from file
 _sv_data := $(file < $(strip $(VERSION_FILE)))
 _sv_mmp := $(subst ., ,$(word 1, $(subst -, ,$(_sv_data))))
