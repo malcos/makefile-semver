@@ -9,11 +9,12 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 
 (empty)
 
-## [0.3.0] - 2021-12-04
+## [0.3.0] - 2021-12-07
 
 ### Changed
 
 - `version.nextcycle` is now `version.nextcyclestep` making clear its intention
+- Default initial value will include the first cycle. i.e. the first word in `$(VERSION_CYCLES)`
 
 ## [0.2.0] - 2021-11-30
 
