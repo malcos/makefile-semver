@@ -62,6 +62,18 @@ You can override the default values of the configuration variables at the beginn
 | `VERSION_CYCLES` | `alpha beta rc`| The pre release cycle names to be supported under the `version.tocycle.*` target. Using dashes (`-`) and dots (`.`) in the names will cause problems |
 | `VERSION_METADATA` | | A user defined variable providing **volatile** and **non persistent** build metadata for inclusion in the version string. |
 
+## Initialization
+
+Once the semver logic is integrated into your makefile there is actually no need to perform any initialization. The file `$(VERSION_FILE)` will be automatically created when you call your makefile, even without build target.
+
+The default value stored into `$(VERSION_FILE)` will be the zero version, and if defined then the first element of `$(VERSION_CYCLES)` will become the current active cycle:
+
+| Value of `$(VERSION_CYCLES)` | Initial version in `$(VERSION_FILE)` |
+| :-- | :-- |
+| (empty) | `0.0.0` |
+| `alpha beta rc` | `0.0.0-alpha.1` |
+
+
 ## Output Variables
 
 These variables are intended to be read and utilized by the user creating a `Makefile` (you).
