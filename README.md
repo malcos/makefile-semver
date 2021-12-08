@@ -1,4 +1,4 @@
-# makefile-semver (0.3.1-alpha.1)
+# makefile-semver (0.3.1-alpha.2)
 
 :: **Semantic Versioning (SemVer) implemented in GNU make** ::
 
@@ -104,11 +104,12 @@ All targets with the exception of `version.print` will output `$(VERSION_DATA)` 
 | `version.nextcyclestep` | Increment `$(VERSION_CYCLE_STEP)` by one and update `$(VERSION_FILE)` |
 | `version.clearcycle` | Clear `$(VERSION_CYCLE_NAME)` and update `$(VERSION_FILE)`, effectively removing the pre release cycle name and stepping from the version data |
 
-## Make Targets: Helpers
+## Make Targets: Aliases
 
 | Name | Description |
 | :-- | :-- |
 | `version.release` | Alias for `version.clearcycle` |
+| `version.next` | If `$(VERSION_CYCLE_NAME)` is defined it will call `version.nextcyclestep`, otherwise `version.nextpatch` |
 
 ## Limitations
 

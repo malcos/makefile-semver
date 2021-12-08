@@ -62,6 +62,8 @@ version.nextcyclestep:
 
 version.release: version.clearcycle
 
+version.next: $(if $(VERSION_CYCLE_NAME), version.nextcyclestep, version.nextpatch)
+
 # support variables (_) and functions (.)
 _basewords := I I I I I I I I I I
 _maxwords = $(foreach _,$(_basewords),$(foreach _,$(_basewords),$(foreach _,$(_basewords),$(foreach _,$(_basewords),$(_basewords)))))

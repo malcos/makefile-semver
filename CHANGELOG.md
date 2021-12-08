@@ -10,6 +10,7 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 ### Added
 
 - `version.clearcycle` replaces `version.release` retaining its original implementation unchanged
+- `version.next` alias for `version.nextpatch` or `version.nextcyclestep` depending on the value of `$(VERSION_CYCLE_NAME)`
 
 ### Changed
 
