@@ -7,7 +7,13 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 
 ## [Unreleased]
 
-(empty)
+### Added
+
+- `version.clearcycle` replaces `version.release` retaining its original implementation unchanged
+
+### Changed
+
+- `version.release` is now officially an alias to `version.clearcycle`
 
 ## [0.3.0] - 2021-12-07
 

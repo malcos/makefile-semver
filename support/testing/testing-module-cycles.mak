@@ -204,6 +204,14 @@ runtests:
 	$(DO) setup VALUE="3.14.15-beta.42" VERSION_METADATA="git:CAFEBABE" capture ACTION="version.debug.VERSION_CYCLE_NAME" verify EXPECTED="beta"
 	$(DO) setup VALUE="3.14.15-beta.42" VERSION_METADATA="git:CAFEBABE" capture ACTION="version.debug.VERSION_CYCLE_STEP" verify EXPECTED="42"
 
+	$(DO) header TEXT="version.clearcycle without cycle data, with and without metadata"
+	$(DO) setup VALUE="3.14.15" execute ACTION="version.clearcycle" verify EXPECTED="3.14.15"
+	$(DO) setup VALUE="3.14.15" VERSION_METADATA="git:CAFEBABE" execute ACTION="version.clearcycle" verify EXPECTED="3.14.15"
+
+	$(DO) header TEXT="version.clearcycle with cycle data, with and without metadata"
+	$(DO) setup VALUE="3.14.15-alpha.42" execute ACTION="version.clearcycle" verify EXPECTED="3.14.15"
+	$(DO) setup VALUE="3.14.15-alpha.42" VERSION_METADATA="git:CAFEBABE" execute ACTION="version.clearcycle" verify EXPECTED="3.14.15"
+
 	$(DO) header TEXT="version.release without cycle data, with and without metadata"
 	$(DO) setup VALUE="3.14.15" execute ACTION="version.release" verify EXPECTED="3.14.15"
 	$(DO) setup VALUE="3.14.15" VERSION_METADATA="git:CAFEBABE" execute ACTION="version.release" verify EXPECTED="3.14.15"

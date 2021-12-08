@@ -33,7 +33,7 @@ You have at least three options on how to integrate the logic of this project in
 
 - **Option 2 / Download and include**: Download the file [Makefile.semver](./Makefile.semver) and [include](https://www.gnu.org/software/make/manual/html_node/Include.html) it from your `Makefile`
 
-- **Option 3: Automatic download and include**: This method requires an Internet connection and `curl` pre installed. Detailed information is available in the document: [Transparently including the SemVer implementation](./support/docs/auto-include.md).
+- **Option 3 / Automatic download and include**: This method requires an Internet connection and `curl` pre installed. Detailed information is available in the document: [Transparently including the SemVer implementation](./support/docs/auto-include.md).
 
 ### Release Version [0.3.0](https://github.com/malcos/makefile-semver/tree/0.3.0)
 
@@ -46,7 +46,7 @@ include Makefile.semver
 
 ## Testing
 
-The implementation got unit tests in place, which are in turn also written in pure `Makefile` format. To run the tests execute:
+The implementation got unit tests in place, which are in turn also written in pure `Makefile` format. To run the tests execute from the root folder of this project:
 
 ```shell
 make runtests
@@ -64,7 +64,7 @@ You can override the default values of the configuration variables at the beginn
 
 ## Initialization
 
-Once the semver logic is integrated into your makefile there is actually no need to perform any initialization. The file `$(VERSION_FILE)` will be automatically created when you call your makefile, even without build target.
+Once the semver logic is integrated into your makefile there is actually no need to perform any initialization. The file `$(VERSION_FILE)` will be automatically created when you call your makefile, even without a build target.
 
 The default value stored into `$(VERSION_FILE)` will be the zero version, and if defined then the first element of `$(VERSION_CYCLES)` will become the current active cycle:
 
@@ -72,7 +72,6 @@ The default value stored into `$(VERSION_FILE)` will be the zero version, and if
 | :-- | :-- |
 | (empty) | `0.0.0` |
 | `alpha beta rc` | `0.0.0-alpha.1` |
-
 
 ## Output Variables
 
@@ -91,7 +90,9 @@ These variables are intended to be read and utilized by the user creating a `Mak
 | `VERSION_CYCLE_NAME` | `rc` | The version pre release cycle name from `$(VERSION_CYCLE)` |
 | `VERSION_CYCLE_STEP` | `2` | The numeric step from `$(VERSION_CYCLE)`. Notice that this value will always be set and it will default to `1` even if `$(VERSION_CYCLE_NAME)` is empty |
 
-## Make Targets
+## Make Targets: Base Actions
+
+All targets with the exception of `version.print` will output `$(VERSION_DATA)` after modifying the version data.
 
 | Name | Description |
 | :-- | :-- |
@@ -101,7 +102,13 @@ These variables are intended to be read and utilized by the user creating a `Mak
 | `version.nextpatch` | Increment `$(VERSION_PATCH)` by one and update `$(VERSION_FILE)` |
 | `version.tocycle.*` | Set `${VERSION_CYCLE_NAME}` and update `$(VERSION_FILE)`. The placeholder `*` is one of the names declared in `$(VERSION_CYCLES)`. Selecting the same value as currently active will have no effect on `$(VERSION_CYCLE_STEP)`, otherwise `$(VERSION_CYCLE_STEP)` will be reset to `1` |
 | `version.nextcyclestep` | Increment `$(VERSION_CYCLE_STEP)` by one and update `$(VERSION_FILE)` |
-| `version.release` | Clear `$(VERSION_CYCLE_NAME)` and update `$(VERSION_FILE)`, effectively removing the pre release cycle name and stepping from the version data |
+| `version.clearcycle` | Clear `$(VERSION_CYCLE_NAME)` and update `$(VERSION_FILE)`, effectively removing the pre release cycle name and stepping from the version data |
+
+## Make Targets: Helpers
+
+| Name | Description |
+| :-- | :-- |
+| `version.release` | Alias for `version.clearcycle` |
 
 ## Limitations
 
