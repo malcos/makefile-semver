@@ -7,6 +7,10 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 
 ## [Unreleased]
 
+(empty)
+
+## [0.3.1] - 2021-12-17
+
 ### Added
 
 - `version.clearcycle` replaces `version.release` retaining its original implementation unchanged
@@ -88,6 +92,7 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 - First SemVer implementation supporting the simple format `MAJOR.MINOR.PATCH`
 
 [Unreleased]: https://github.com/malcos/makefile-semver/tree/master
+[0.3.1]: https://github.com/malcos/makefile-semver/tree/0.3.1
 [0.3.0]: https://github.com/malcos/makefile-semver/tree/0.3.0
 [0.2.0]: https://github.com/malcos/makefile-semver/tree/0.2.0
 [0.1.0]: https://github.com/malcos/makefile-semver/tree/0.1.0
