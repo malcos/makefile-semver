@@ -7,7 +7,9 @@ Project [makefile-semver](https://github.com/malcos/makefile-semver) by [malcos]
 
 ## [Unreleased]
 
-(empty)
+### Changed
+
+- `version.nextmajor`, `version.nextminor` and `version.nextpatch` are now aliases for hidden muted functions
 
 ## [0.3.1] - 2021-12-17
 

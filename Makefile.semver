@@ -25,23 +25,27 @@ VERSION = $(VERSION_DATA)$(addprefix +,$(VERSION_METADATA))
 version.print:
 	@echo $(VERSION)
 
-version.nextmajor:
+version.nextpatch: .version.nextpatch .version.return
+version.nextminor: .version.nextminor .version.return
+version.nextmajor: .version.nextmajor .version.return
+
+.version.return:
+	@echo $(VERSION_DATA)
+
+.version.nextmajor:
 	$(eval VERSION_MAJOR = $(call .increment, $(VERSION_MAJOR)))
 	$(eval VERSION_MINOR = 0)
 	$(eval VERSION_PATCH = 0)
 	$(file > $(VERSION_FILE),$(VERSION_DATA))
-	@echo $(VERSION_DATA)
 
-version.nextminor:
+.version.nextminor:
 	$(eval VERSION_MINOR = $(call .increment, $(VERSION_MINOR)))
 	$(eval VERSION_PATCH = 0)
 	$(file > $(VERSION_FILE),$(VERSION_DATA))
-	@echo $(VERSION_DATA)
 
-version.nextpatch:
+.version.nextpatch:
 	$(eval VERSION_PATCH = $(call .increment, $(VERSION_PATCH)))
 	$(file > $(VERSION_FILE),$(VERSION_DATA))
-	@echo $(VERSION_DATA)
 
 version.clearcycle:
 	$(eval VERSION_CYCLE_NAME = )
@@ -61,7 +65,6 @@ version.nextcyclestep:
 	@echo $(VERSION_DATA)
 
 version.release: version.clearcycle
-
 version.next: $(if $(VERSION_CYCLE_NAME), version.nextcyclestep, version.nextpatch)
 
 # support variables (_) and functions (.)
